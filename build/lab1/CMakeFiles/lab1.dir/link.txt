@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/lab1.dir/link.d CMakeFiles/lab1.dir/main.c.o CMakeFiles/lab1.dir/funcs.c.o CMakeFiles/lab1.dir/validate.c.o -o /mnt/d/MAI/3semestr/algosi/bin/lab1  -lm

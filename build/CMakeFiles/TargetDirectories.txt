@@ -1,0 +1,5 @@
+/mnt/d/MAI/3semestr/algosi/build/CMakeFiles/edit_cache.dir
+/mnt/d/MAI/3semestr/algosi/build/CMakeFiles/rebuild_cache.dir
+/mnt/d/MAI/3semestr/algosi/build/lab1/CMakeFiles/lab1.dir
+/mnt/d/MAI/3semestr/algosi/build/lab1/CMakeFiles/edit_cache.dir
+/mnt/d/MAI/3semestr/algosi/build/lab1/CMakeFiles/rebuild_cache.dir
