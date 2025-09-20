@@ -2,10 +2,18 @@
 
     laba_1 added
 
-## simply to compile and run:
+## simply to compile
 
 ```
-cmake --build ./build
+mkdir build
+cd ./build
+cmake ..
+cmake --build .
+```
+
+## then to run from root:
+
+```
 ./bin/lab1 {number} {flag}
 ```
 
