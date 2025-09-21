@@ -28,7 +28,6 @@ void handle_error(returnCode status) {
 
 int parseInt(char *str, int *num) {
 	char *end;
-	errno = 0;
 	long res = strtol(str, &end, 10);
 	if (end == str || *end != '\0') {
 		return INVALID_NUMBER_INPUT;

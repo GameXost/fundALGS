@@ -83,8 +83,7 @@ int stepenb(int number,int (*res)[11], int *size) {
 				}
 				val *= j;
 			}
-			int preRes = (int)val;
-			res[j][i] = preRes;
+			res[j][i] = (int)val;
 			(*size)++;
 		}
 	}
