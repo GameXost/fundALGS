@@ -1,5 +1,4 @@
 #include "additional.h"
-#include <errno.h>
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,7 +33,7 @@ int parseInt(char *str, int *num) {
 	if (end == str || *end != '\0') {
 		return INVALID_NUMBER_INPUT;
 	}
-	if ((errno == ERANGE) || res > INT_MAX || res < INT_MIN) {
+	if (res > INT_MAX || res < INT_MIN) {
 		return NUM_OVERFLOW;
 	}
 	*num = (int)res;
