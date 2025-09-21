@@ -9,17 +9,17 @@ typedef enum {
 	Zero
 } PrimeStatus;
 
-typedef enum returnCode {
+typedef enum ReturnCode {
 	OK = 0,
 	INVALID_INPUT,
 	INVALID_FLAG_INPUT,
 	INVALID_NUMBER_INPUT,
 	NUM_OVERFLOW,
 
-}returnCode;
+}ReturnCode;
 
 
-void handle_error(returnCode status);
+void handleError(ReturnCode status);
 int parseInt(char *str, int *num);
 int validate(int argc, char *numInp, char *flagInp, int *num, char *flag);
 

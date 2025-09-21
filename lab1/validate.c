@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void handle_error(returnCode status) {
+void handleError(ReturnCode status) {
 	switch (status) {
 		case OK:
 			printf("function completed successfully\n");
@@ -45,7 +45,7 @@ int validate(int argc, char *numberInp, char *flagInp, int *num, char *flag){
 		return INVALID_INPUT;
 	}
 	
-	returnCode status = parseInt(numberInp, num);
+	ReturnCode status = parseInt(numberInp, num);
 	if (status != OK) {
 		return status;
 	}

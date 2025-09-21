@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[]) {
   	if (argc != 3) {
-		handle_error(INVALID_INPUT);
+		handleError(INVALID_INPUT);
     	return INVALID_INPUT;
   	}
 
@@ -15,9 +15,9 @@ int main(int argc, char *argv[]) {
 	int num; // куда запишем итоговое число
 	char flag;
 
-	returnCode status = validate(argc, numberInp, flagInp, &num, &flag);
+	ReturnCode status = validate(argc, numberInp, flagInp, &num, &flag);
 	if (status != OK) {
-		handle_error(status);
+		handleError(status);
 		return status;
 	}
 	printf("%d %c\n", num, flag);
@@ -25,9 +25,9 @@ int main(int argc, char *argv[]) {
 	if (flag == 'h') {
 		int res[100];
 		int curSize = 0;
-		returnCode status  = kratno(num, res, &curSize);
+		ReturnCode status  = kratno(num, res, &curSize);
 		if (status != OK) {
-			handle_error(status);
+			handleError(status);
 			return status;
 		}
 		for (int i = 0; i < curSize; i++) {
@@ -38,9 +38,9 @@ int main(int argc, char *argv[]) {
 
 	} else if (flag == 'p') {
 		PrimeStatus res;
-		returnCode status = simple(num, &res);
+		ReturnCode status = simple(num, &res);
 		if (status != OK) {
-			handle_error( status);
+			handleError( status);
 			return status;
 		}
 		switch (res) {
@@ -64,9 +64,9 @@ int main(int argc, char *argv[]) {
 
 	} else if (flag == 'f') {
 		long long res;
-		returnCode status = factorial(num, &res);
+		ReturnCode status = factorial(num, &res);
 		if (status != OK) {
-			handle_error(status);
+			handleError(status);
 			return status;
 		}
 		printf("%d! = %lld\n", num, res);
@@ -74,9 +74,9 @@ int main(int argc, char *argv[]) {
 
 	} else if (flag == 'a') {
 		int res;
-		returnCode status = sum(num, &res);
+		ReturnCode status = sum(num, &res);
 		if (status != OK) {
-			handle_error(status);
+			handleError(status);
 			return status;
 		}
 		printf("sum of numbers from 1 to %d = %d\n", num, res);
@@ -84,14 +84,14 @@ int main(int argc, char *argv[]) {
 
 	} else if (flag == 'e') {
 		if (num < 1 || num > 10) {
-			handle_error(INVALID_NUMBER_INPUT);
+			handleError(INVALID_NUMBER_INPUT);
 			return INVALID_NUMBER_INPUT;
 		}
 		int res[11][11];
 		int curSize = 0;
-		returnCode status = stepenb(num, res, &curSize);
+		ReturnCode status = stepenb(num, res, &curSize);
 		if (status != OK) {
-			handle_error(status);
+			handleError(status);
 			return status;
 		}
 		for (int i = 1; i <= num; i++) {
@@ -106,9 +106,9 @@ int main(int argc, char *argv[]) {
 	} else if (flag == 's') {
 		char hexRes[10];
 		
-		returnCode status = hexNumber(num, hexRes);
+		ReturnCode status = hexNumber(num, hexRes);
 		if (status != OK) {
-			handle_error(status);
+			handleError(status);
 			return status;
 		}
 		for (int i = 0; hexRes[i] != '\0'; i++ ) {
