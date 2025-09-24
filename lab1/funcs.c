@@ -28,11 +28,11 @@ int simple(int number, PrimeStatus *status) {
 	} else if (number == 2) {
 		*status = Prime;
 		return OK;
-	} else if (number < 1) {
-		*status = InvalidNumber;
-		return OK;
 	} else if (number == 0) {
 		*status = Zero;
+		return OK;
+	} else if (number < 1) {
+		*status = InvalidNumber;
 		return OK;
 	}
 	for (int i = 2; i < (int)sqrt(number) + 1;i++) {
