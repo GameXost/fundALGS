@@ -5,12 +5,22 @@
 #include <limits.h>
 #include <stdio.h>
 
+/*основная идея проверять число на делимость, используя уже найденные простые числа, которые хранятся в отдельном массиве
+простой поиск от последнего найденного числа до корня+1 или конца массива с простыми числами
+*/
 
 int simpleSolution(int num, Primes *val){
 	if( val->lastNum > INT_MAX - 2){
 		return NUM_OVERFLOW;
 	}
-	for (int i = val->lastNum+2; val->size < num; i +=2) {
+
+	if (val->lastNum % 2 == 0){
+		val->lastNum++;
+	}else{
+		val->lastNum += 2;
+	}
+
+	for (int i = val->lastNum; val->size < num; i +=2) {
 		if( i > INT_MAX - 2){
 			return NUM_OVERFLOW;
 		}
@@ -77,6 +87,7 @@ int readNum(int *res, Primes *val) {
 	if (status != OK) {
 		return status;
 	}
+	
 	*res = (val->array)[num-1];
 	return OK;
 }
@@ -88,12 +99,11 @@ int initPrimeArray(int capacity, Primes *val){
 		return MEMORY_ALLOCATION_ERROR;
 	}
 	val->capacity = capacity;
-	val->lastNum = 3;
-	val->size = 2;
+	val->lastNum = 2;
+	val->size = 1;
 
 
 	val->array[0] = 2;
-	val->array[1] = 3;
 
 	return OK;
 }

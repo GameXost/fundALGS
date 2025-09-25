@@ -1,10 +1,15 @@
 #include <stdbool.h>
 #include "additional.h"
 #include <math.h>
-#include <stdio.h>
+
 
 int for_m(float *nums, bool *res){
-	if ((int)nums[1] == 0){
+	//validate for int
+	if(fabsf(nums[0] - roundf(nums[0])) > 1e-6 || fabsf(nums[1] - roundf(nums[1])) > 1e-6){
+		return INVALID_NUMBER_INPUT;
+	}
+
+	if ((int)nums[1] == 0 || (int)nums[0] == 0){
 		return INVALID_NUMBER_INPUT;
 	}
 	if ((int)nums[0] % (int)nums[1] == 0){
@@ -63,6 +68,7 @@ int for_q(float *nums, float res[6][2], int *cnt){
 				if (k == j || k == i){
 					continue;
 				}
+				bool isDuplicate = false;
 				float a = nums[i];
 				float b = nums[j];
 				float c = nums[k];
@@ -74,12 +80,44 @@ int for_q(float *nums, float res[6][2], int *cnt){
 					continue;
 				} else if (fabs(disc) < e){
 					float x = -b / (2 * a);
+					if (fabs(x) < e){
+						x = 0.0;
+					}
+
+					//check for duplicates
+					for(int prev = 0; prev < *cnt; prev++ ){
+						if (isnan(res[prev][1]) && fabs(res[prev][0] - x) < e){
+							isDuplicate = true;
+							break;
+						}
+					}
+					if (isDuplicate){
+						continue;
+					}
 					res[*cnt][0] = x;
-					res[*cnt][1] = 0;
+					res[*cnt][1] = NAN;
 					(*cnt)++;
 				} else {
 					float x1 = (-b + sqrt(disc)) / (2 * a);
 					float x2 = (-b - sqrt(disc)) / (2 * a);
+					if (fabs(x1) < e) {
+						x1 = 0.0;
+					}
+					if (fabs(x2) < e){
+						x2 = 0.0;
+					}
+
+					//check for duplicates
+					for(int prev = 0; prev < *cnt; prev++){
+						if ((fabs(res[prev][0] - x1) < e && fabs(res[prev][1] - x2) < e) || 
+							(fabs(res[prev][0] - x2) < e && fabs(res[prev][1] - x1) < e)){
+								isDuplicate = true;
+								break;
+						}
+					}
+					if (isDuplicate){
+						continue;
+					}
 					res[*cnt][0] = x1;
 					res[*cnt][1] = x2;
 					(*cnt)++;
