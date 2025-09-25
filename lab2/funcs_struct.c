@@ -9,7 +9,7 @@
 простой поиск от последнего найденного числа до корня+1 или конца массива с простыми числами
 */
 
-int simpleSolution(int num, Primes *val){
+int simpleSolution(const int num, Primes *val){
 	if( val->lastNum > INT_MAX - 2){
 		return NUM_OVERFLOW;
 	}
@@ -41,7 +41,7 @@ int simpleSolution(int num, Primes *val){
 	return OK;
 }
 
-int reallocatingMem(int num, Primes *val){
+int reallocatingMem(const int num, Primes *val){
 	while (num > val->capacity){
 		if (val->capacity > INT_MAX / 2){
 			return MEMORY_ALLOCATION_ERROR;

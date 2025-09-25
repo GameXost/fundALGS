@@ -44,8 +44,24 @@ int parseFloat(char *str, float *num){
 	return OK;
 }
 
+int parseInt(char *str, int *num) {
+	char *end;
+	long res = strtol(str, &end, 10);
+	if (end == str || *end != '\0') {
+		return INVALID_NUMBER_INPUT;
+	}
+	if (res > INT_MAX || res < INT_MIN) {
+		return NUM_OVERFLOW;
+	}
+	if (res < 0) {
+		return INVALID_NUMBER_INPUT;
+	}
+	*num = (int)res;
+	return OK;
+}
 
-int validate(int argc, char *argv[], char *flag, float *nums){
+
+int validate(int argc, char *argv[], char *flag){
 	if (argc < 4 || argc > 6){
 		return INVALID_INPUT;
 	}
@@ -70,12 +86,6 @@ int validate(int argc, char *argv[], char *flag, float *nums){
 			};
 			break;
 		default: return INVALID_FLAG_INPUT;
-	}
-	for (int i = 0; i < argc - 2; i++){
-		ReturnCode status = parseFloat(argv[i+2], &nums[i]);
-		if (status != OK){
-			return INVALID_NUMBER_INPUT;
-		}
 	}
 	return OK;
 }

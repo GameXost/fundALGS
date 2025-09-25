@@ -22,8 +22,10 @@ typedef enum ReturnCode {
 
 void handleError(ReturnCode status);
 int parseFloat(char *str, float *num);
-int validate(int argc, char *argv[], char *flag, float *nums);
+int parseInt(char *str, int *num);
+
+int validate(int argc, char *argv[], char *flag);
 
 int for_q(float *nums, float res[6][2], int *cnt);
 int for_t(float *nums, bool *res);
-int for_m(float *nums, bool *res);
+int for_m(int *nums, bool *res);

@@ -3,16 +3,12 @@
 #include <math.h>
 
 
-int for_m(float *nums, bool *res){
-	//validate for int
-	if(fabsf(nums[0] - roundf(nums[0])) > 1e-6 || fabsf(nums[1] - roundf(nums[1])) > 1e-6){
-		return INVALID_NUMBER_INPUT;
-	}
+int for_m(int *nums, bool *res){
 
-	if ((int)nums[1] == 0 || (int)nums[0] == 0){
+	if (nums[1] == 0 || nums[0] == 0){
 		return INVALID_NUMBER_INPUT;
 	}
-	if ((int)nums[0] % (int)nums[1] == 0){
+	if (nums[0] % nums[1] == 0){
 		*res = true;
 		return OK;
 	}
@@ -20,7 +16,7 @@ int for_m(float *nums, bool *res){
 	return OK;
 }
 
-float max(float a, float b){
+float max(const float a,const float b){
 	if (a - b > 0){
 		return a;
 	}
@@ -52,9 +48,6 @@ int for_t(float *nums, bool *res){
 
 int for_q(float *nums, float res[6][2], int *cnt){
 	float e = nums[0];
-	float a = nums[1];
-	float b = nums[2];
-	float c = nums[3];
 
 	if (e < 0) {
 		return INVALID_NUMBER_INPUT;
