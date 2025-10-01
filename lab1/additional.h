@@ -2,7 +2,7 @@
 
 
 typedef enum {
-	NumberOne = 0,
+	NumberOne,
 	Prime,
 	Composite,
 	InvalidNumber,
@@ -10,11 +10,12 @@ typedef enum {
 } PrimeStatus;
 
 typedef enum ReturnCode {
-	OK = 0,
+	OK,
 	INVALID_INPUT,
 	INVALID_FLAG_INPUT,
 	INVALID_NUMBER_INPUT,
 	NUM_OVERFLOW,
+	MEM_ALLOCATION_ERROR,
 
 }ReturnCode;
 
@@ -28,4 +29,4 @@ int simple(int number, PrimeStatus *status);
 int sum(int number, int *res);
 int factorial(int number, long long *res);
 int stepenb(int number,int (*res)[11], int *size);
-int hexNumber(int num, char *res);
+int hexNumber(const char *numStr, char *res);

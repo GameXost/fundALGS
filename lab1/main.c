@@ -1,18 +1,15 @@
 #include <stdio.h>
 #include "additional.h"
-
+//TODO: -s в переводе в 16 ричную систему исключить оверфлоу, в 
 int main(int argc, char *argv[]) {
   	if (argc != 3) {
 		handleError(INVALID_INPUT);
     	return INVALID_INPUT;
   	}
 
-
-	//char *funcNameINp = argv[0]; // название функции - массив чаров
-	char *numberInp = argv[1]; // число в представлении массива чаров, мб и не число вовсе  
-	char *flagInp = argv[2]; // флаг для функций, тоже массив чаров, т.к -f, /f надо валидировать тоже, мб и не флаг 
-	// я ебал эту валидацию
-	int num; // куда запишем итоговое число
+	char *numberInp = argv[1];
+	char *flagInp = argv[2]; 
+	int num;
 	char flag;
 
 	ReturnCode status = validate(argc, numberInp, flagInp, &num, &flag);
@@ -20,7 +17,6 @@ int main(int argc, char *argv[]) {
 		handleError(status);
 		return status;
 	}
-	printf("%d %c\n", num, flag);
 
 	if (flag == 'h') {
 		int res[100];
@@ -29,6 +25,10 @@ int main(int argc, char *argv[]) {
 		if (status != OK) {
 			handleError(status);
 			return status;
+		}
+		if (res[0] == 0){
+			printf("no numbers were found, enter number <= 100\n");
+			return OK;
 		}
 		for (int i = 0; i < curSize; i++) {
 			printf("%d\n", res[i]);
@@ -104,9 +104,9 @@ int main(int argc, char *argv[]) {
 
 
 	} else if (flag == 's') {
-		char hexRes[10];
+		char hexRes[1024];
 		
-		ReturnCode status = hexNumber(num, hexRes);
+		ReturnCode status = hexNumber(numberInp, hexRes);
 		if (status != OK) {
 			handleError(status);
 			return status;

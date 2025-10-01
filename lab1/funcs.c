@@ -1,13 +1,21 @@
+#include <ctype.h>
 #include <stdbool.h>
 #include "additional.h" 
 #include <limits.h>
 #include <math.h>
+#include <stddef.h>
+#include <string.h>
+#include <stdlib.h>
 
 // -h числа в пределах 100 кратные number
 int kratno(int number, int *res, int *size) {
+	if(number > 100){
+		res[0] = 0;
+		return OK;
+	}
 	bool flag = false;
 	for (int i = 1; i <= 100; i++){
-		if (number % i == 0) {
+		if (i % number == 0) {
 			res[*size] = i;
 			(*size)++;
 			flag = true;
@@ -91,25 +99,64 @@ int stepenb(int number,int (*res)[11], int *size) {
 }
 
 //-s перевод в 16 систему
-int hexNumber(int num, char *res) {
-	if (num == 0) {
+int hexNumber(const char *numStr, char *res) {
+
+	if (numStr == NULL){
+		return INVALID_NUMBER_INPUT;
+	}
+
+	const char *p = numStr;
+	while (*p == '0'){
+		p++;
+	}
+
+	if(*p == '\0'){
 		res[0] = '0';
 		res[1] = '\0';
 		return OK;
 	}
-	char digits[] = "0123456789ABCDEF";
-	char curRes[10];
-	int size = 0;
-	for (;num > 0;) {
-		int x = num % 16;
-		curRes[size] = digits[x];
-		size++;
-		num /= 16; 
+
+	const char digits[] = "0123456789ABCDEF";
+	int hexDigits[1024];
+	int length = 0;
+
+	for(const char *p = numStr; *p; p++){
+		int d = *p - '0';
+		unsigned next = 0;
+		for(int i = 0; i < length; i++){
+			unsigned val = (unsigned)hexDigits[i] * 10U + next;
+			hexDigits[i] = val % 16;
+			next = val / 16;
+		}
+		while (next > 0){
+			if (length >=1024){
+				return NUM_OVERFLOW;
+			}
+			hexDigits[length++] = next % 16;
+			next /= 16;
+		}
+		next = (unsigned)d;
+		for(int i = 0; i < length; i++){
+			unsigned val = (unsigned)hexDigits[i] + next;
+			hexDigits[i] = val % 16;
+			next  = val / 16;
+			if (next  == 0){
+				break;
+			}
+		}
+		while(next > 0){
+			if (length >= 1024){
+				return NUM_OVERFLOW;
+			}
+			hexDigits[length++] = next % 16;
+			next /= 16;
+		}
 	}
-	for (int i = 0; i < size; i++) {
-		res[i] = curRes[size - i - 1];
+	int ind = 0;
+	for(int i = length - 1; i >= 0; i--){
+		res[ind++] = digits[hexDigits[i]];
 	}
-	res[size] = '\0';
+	res[ind] = '\0';
 	return OK;
 }
 

@@ -1,4 +1,5 @@
 #include "additional.h"
+#include <ctype.h>
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,15 +40,22 @@ int parseInt(char *str, int *num) {
 	return OK;
 }
 
+int isAllDigits(const char *str){
+	if(str == NULL || *str=='\0'){
+		return INVALID_NUMBER_INPUT;
+	}
+	for(; *str; str++){
+		if (!isdigit(*str)){
+			return INVALID_NUMBER_INPUT;
+		}
+	}
+	return OK;
+}
+
 // валидирует аргументы, полученные mainом, преобразует В 
 int validate(int argc, char *numberInp, char *flagInp, int *num, char *flag){
 	if (argc != 3) {
 		return INVALID_INPUT;
-	}
-	
-	ReturnCode status = parseInt(numberInp, num);
-	if (status != OK) {
-		return status;
 	}
 
 	if (flagInp[0] != '-' && flagInp[0] != '/') {
@@ -67,6 +75,18 @@ int validate(int argc, char *numberInp, char *flagInp, int *num, char *flag){
 		case 'f': break;
 		default:
 			return INVALID_FLAG_INPUT;
+	}
+	if (*flag == 's'){
+		ReturnCode status = isAllDigits(numberInp);
+		if (status != OK){
+			return status;
+		}
+		*num = 0;
+	} else {
+		ReturnCode status = parseInt(numberInp, num);
+		if (status != OK) {
+			return status;
+		}
 	}
 	return OK;
 }
