@@ -1,11 +1,8 @@
-#include <ctype.h>
 #include <stdbool.h>
 #include "additional.h" 
 #include <limits.h>
 #include <math.h>
 #include <stddef.h>
-#include <string.h>
-#include <stdlib.h>
 
 // -h числа в пределах 100 кратные number
 int kratno(int number, int *res, int *size) {
