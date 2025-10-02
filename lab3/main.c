@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
+//TODO: изменить циклы в Q, сравнение чисел 
 int main(int argc, char *argv[]) {
 
 	char flag;
@@ -18,7 +18,8 @@ int main(int argc, char *argv[]) {
 	bool resFlag;
 	switch (flag){
 		case 'q':{
-			float *nums = malloc(sizeof(float) * (argc - 2));
+
+			float *nums = (float*)malloc(sizeof(float) * (argc - 2));
 			if (nums == NULL) {
 				handleError(MEMORY_ALLOCATION_ERROR);
 				return MEMORY_ALLOCATION_ERROR;
@@ -27,10 +28,11 @@ int main(int argc, char *argv[]) {
 				ReturnCode status = parseFloat(argv[i+2], &nums[i]);
 				if (status != OK){
 					free(nums);
+					handleError(status);
 					return INVALID_NUMBER_INPUT;
 				}
 			}
-			status = for_q(nums, res, &cnt);
+			status = for_qq(nums, res, &cnt);
 			if (status != OK){
 				handleError(status);
 				free(nums);
@@ -39,10 +41,10 @@ int main(int argc, char *argv[]) {
 
 			for (int i = 0; i < cnt; i++){
 				if (isnan(res[i][1])){
-					printf("here only one solution: %0.3f\n", res[i][0]);
+					printf("here only one solution: %f\n", res[i][0]);
 					continue;
 				}
-				printf("solutions: %0.3f %0.3f\n", res[i][0], res[i][1]);
+				printf("solutions: %f %f\n", res[i][0], res[i][1]);
 			}
 
 			if (cnt == 0){
@@ -51,8 +53,10 @@ int main(int argc, char *argv[]) {
 			free(nums);
 			break;
 		}
+
+
 		case 'm':{
-			int *nums = malloc(sizeof(int) * (argc - 2));
+			int *nums = (int*)malloc(sizeof(int) * (argc - 2));
 			if (nums == NULL) {
 				handleError(MEMORY_ALLOCATION_ERROR);
 				return MEMORY_ALLOCATION_ERROR;
@@ -61,6 +65,7 @@ int main(int argc, char *argv[]) {
 				ReturnCode status = parseInt(argv[i+2], &nums[i]);
 				if (status != OK){
 					free(nums);
+					handleError(status);
 					return INVALID_NUMBER_INPUT;
 				}
 			}
@@ -79,8 +84,10 @@ int main(int argc, char *argv[]) {
 			free(nums);
 			break;
 		}
+
+		
 		case 't':{
-			float *nums = malloc(sizeof(float) * (argc - 2));
+			float *nums = (float*)malloc(sizeof(float) * (argc - 2));
 			if (nums == NULL) {
 				handleError(MEMORY_ALLOCATION_ERROR);
 				return MEMORY_ALLOCATION_ERROR;
@@ -88,7 +95,8 @@ int main(int argc, char *argv[]) {
 			for (int i = 0; i < argc - 2; i++){
 				ReturnCode status = parseFloat(argv[i+2], &nums[i]);
 				if (status != OK){
-					free(nums);
+					free(nums);\
+					handleError(status);
 					return INVALID_NUMBER_INPUT;
 				}
 			}
@@ -99,9 +107,9 @@ int main(int argc, char *argv[]) {
 				return status;
 			}
 			if (resFlag == true){
-				printf("yoy 3 numbers:  %.3f, %.3f, %.3f might be of a rectangular triangle\n", nums[1], nums[2], nums[3]);
+				printf("yoy 3 numbers:  %f, %f, %f might be of a rectangular triangle\n", nums[1], nums[2], nums[3]);
 			} else{
-				printf("no, numbers %.3f, %.3f, %.3f cant be a rect triangle\n", nums[1], nums[2], nums[3]);
+				printf("no, numbers %f, %f, %f cant be a rect triangle\n", nums[1], nums[2], nums[3]);
 			}
 			free(nums);
 			break;

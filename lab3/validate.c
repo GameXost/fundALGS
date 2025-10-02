@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <float.h>
 #include <string.h>
-
+#include <limits.h>
 
 
 void handleError(ReturnCode status) {
