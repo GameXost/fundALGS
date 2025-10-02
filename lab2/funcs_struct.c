@@ -21,7 +21,7 @@ int simpleSolution(const int num, Primes *val){
 	}
 
 	for (int i = val->lastNum; val->size < num; i +=2) {
-		if( i > INT_MAX - 2){
+		if( i >= INT_MAX - 2){
 			return NUM_OVERFLOW;
 		}
 		bool flag = true;
@@ -48,7 +48,7 @@ int reallocatingMem(const int num, Primes *val){
 		}
 		(val->capacity) *= 2;
 	}
-	int *temp = realloc(val->array, sizeof(int) * (val->capacity));
+	int *temp = (int*)realloc(val->array, sizeof(int) * (val->capacity));
 	if (temp == NULL) {
 		return MEMORY_ALLOCATION_ERROR; 
 	}
@@ -94,7 +94,7 @@ int readNum(int *res, Primes *val) {
 
 
 int initPrimeArray(int capacity, Primes *val){
-	val->array = malloc(sizeof(int) * capacity);
+	val->array = (int*)malloc(sizeof(int) * capacity);
 	if (val->array == NULL) {
 		return MEMORY_ALLOCATION_ERROR;
 	}

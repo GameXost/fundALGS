@@ -4,33 +4,33 @@
 #include <locale.h>
 
 int main(int argc, char **argv) {
+	if (argc < 3) {
+		handleError(INVALID_INPUT);
+		return INVALID_INPUT;
+	}
 	setlocale(LC_ALL, "");
 
 	//getting data from argv
-	char *flagInp = argv[1];
 	char *inputFileName = argv[2];
-	char *outputFileName; // выходной файл
-	char flagOut; // флаг очие=щенный для свитча
+	char *outputFileName;
+	char flagOut;
 
-	ReturnCode status = validate(argc, argv, flagInp, inputFileName, &flagOut, &outputFileName);
+	ReturnCode status = validate(argc, argv, &flagOut, &outputFileName);
 	if (status != OK){
 		handleError(status);
 		return status;
 	}
-	//take away from main
-	//allocate memory for outputFileName
 
 	// openfile for reading
 	FILE *resFileInput = fopen(inputFileName, "r");
 	if (resFileInput == NULL){
-		printf("BBBBB");
 		handleError(ERROR_OPEN_FILE);
 		return ERROR_OPEN_FILE;
 	}
+
 	// open file for writing
 	FILE *resFileOutput = fopen(outputFileName, "w");
 	if (resFileOutput == NULL) {
-		printf("AAAAAAA");
 		handleError(ERROR_OPEN_FILE);
 		return ERROR_OPEN_FILE;
 	}
@@ -64,8 +64,8 @@ int main(int argc, char **argv) {
 				break;
 			}
 			break;
-		default: 
-			handleError(INVALID_FLAG_INPUT);	
+		default:
+			handleError(INVALID_FLAG_INPUT);
 			return INVALID_FLAG_INPUT;
 	}
 	fclose(resFileInput);

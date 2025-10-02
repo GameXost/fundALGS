@@ -1,5 +1,5 @@
 #pragma once
-#include <stdbool.h>
+#include <wchar.h>
 #include <stdio.h>
 typedef enum {
 	NumberOne = 0,
@@ -16,16 +16,17 @@ typedef enum ReturnCode {
 	INVALID_NUMBER_INPUT,
 	NUM_OVERFLOW,
 	MEMORY_ALLOCATION_ERROR,
-	ERROR_OPEN_FILE
+	ERROR_OPEN_FILE,
+	ERROR_WRITING_IN_FILE
 
 }ReturnCode;
 
 
 void handleError(ReturnCode status);
-int validate(int argc, char **argv, char *flagInp, char *input, char *flagOut, char **outputFileName);
-int hexNumber(int num, char *res);
+int validate(int argc, char **argv, char *flagOut, char **outputFileName);
+int hexNumber(wint_t num, wchar_t *res);
 
-int for_d(FILE *inputFileName, FILE *ouputFileOutput);
+int for_d(FILE *inputFileName, FILE *outputFileOutput);
 int for_i(FILE *inputFileName, FILE *outputFileName);
 int for_a(FILE *inputFileName, FILE *outputFileName);
 int for_s(FILE *inputFileName, FILE *outputFileName);
