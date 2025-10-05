@@ -3,8 +3,6 @@
 #include <ctype.h>
 #include <wchar.h>
 #include <wctype.h>
-//TODO: ебануть везде wide char т.к хуй знает что введут
-
 
 
 
@@ -47,7 +45,6 @@ int for_i(FILE *inputFileName, FILE *outputFileName){
 	return OK;
 }
 
-
 int for_s(FILE *inputFileName, FILE *outputFileName){
 	if (inputFileName == NULL || outputFileName == NULL){
 		return ERROR_OPEN_FILE;
@@ -60,7 +57,7 @@ int for_s(FILE *inputFileName, FILE *outputFileName){
 			continue;
 		}
 		if (c == L'\n'){
-			fwprintf(outputFileName, L"%d\n", cnt);
+			fwprintf(outputFileName, L"%d\n", --cnt);
 			cnt = 0;
 		} else{
 			cnt++;
@@ -86,7 +83,7 @@ int hexNumber(wint_t num, wchar_t *res) {
 	int size = 0;
 	for(;num > 0;) {
 		wint_t x = num % 16;
-		res[size] = (wchar_t)digits[x];
+		res[size] = digits[x];
 		size++;
 		num /= 16;
 	}

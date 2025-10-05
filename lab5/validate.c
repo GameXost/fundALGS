@@ -22,7 +22,7 @@ int validate(int argc, char **argv, char *flagOut, char **outputFileName){
 				return INVALID_INPUT;
 			}
 			*flagOut = flagInp[1];
-			*outputFileName = malloc(sizeof(char) * (strlen(inputFileName) + 5));
+			*outputFileName = (char*)malloc(sizeof(char) * (strlen(inputFileName) + 5));
 			if (*outputFileName == NULL){
 				handleError(MEMORY_ALLOCATION_ERROR);
 				return MEMORY_ALLOCATION_ERROR;
@@ -45,7 +45,11 @@ int validate(int argc, char **argv, char *flagOut, char **outputFileName){
 			if (flagInp[1] != 'n'){
 				return INVALID_FLAG_INPUT;
 			}
-			*outputFileName = argv[3];
+			*outputFileName = (char*)malloc(sizeof(char) * (strlen(argv[3])+1));
+			if (*outputFileName == NULL) {
+				return MEMORY_ALLOCATION_ERROR;
+			}
+			strcpy(*outputFileName, argv[3]);
 
 			switch (*flagOut){
 				case 'd': break;

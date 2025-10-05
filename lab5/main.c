@@ -25,6 +25,7 @@ int main(int argc, char **argv) {
 	FILE *resFileInput = fopen(inputFileName, "r");
 	if (resFileInput == NULL){
 		handleError(ERROR_OPEN_FILE);
+		free(outputFileName);
 		return ERROR_OPEN_FILE;
 	}
 
@@ -32,6 +33,8 @@ int main(int argc, char **argv) {
 	FILE *resFileOutput = fopen(outputFileName, "w");
 	if (resFileOutput == NULL) {
 		handleError(ERROR_OPEN_FILE);
+		fclose(resFileInput);
+		free(outputFileName);
 		return ERROR_OPEN_FILE;
 	}
 
@@ -66,6 +69,9 @@ int main(int argc, char **argv) {
 			break;
 		default:
 			handleError(INVALID_FLAG_INPUT);
+			fclose(resFileInput);
+			fclose(resFileOutput);
+			free(outputFileName);
 			return INVALID_FLAG_INPUT;
 	}
 	fclose(resFileInput);

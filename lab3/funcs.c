@@ -37,7 +37,7 @@ int for_t(float *nums, bool *res){
 	}
 	float maxFloat = max(a, max(b, c, e), e);
 	float sumSquare = a * a + b * b + c * c - maxFloat * maxFloat;
-	if ( fabs(maxFloat * maxFloat - sumSquare) < e ) {
+	if (fabs(maxFloat * maxFloat - sumSquare) < e ) {
 		*res = true;
 		return OK;
 	} 

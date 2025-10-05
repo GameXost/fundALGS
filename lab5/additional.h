@@ -2,7 +2,7 @@
 #include <wchar.h>
 #include <stdio.h>
 typedef enum {
-	NumberOne = 0,
+	NumberOne,
 	Prime,
 	Composite,
 	InvalidNumber,
@@ -10,7 +10,7 @@ typedef enum {
 } PrimeStatus;
 
 typedef enum ReturnCode {
-	OK = 0,
+	OK,
 	INVALID_INPUT,
 	INVALID_FLAG_INPUT,
 	INVALID_NUMBER_INPUT,
