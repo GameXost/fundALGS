@@ -14,6 +14,9 @@ void handleError(ReturnCode status) {
         case ERROR_MEMORY_ALLOCATION:
             printf("occured allocation memory error");
             break;
+        case ERROR_INVALID_DIG:
+            printf("wtf how u did it ???\n");
+            break;
     }
 }
 

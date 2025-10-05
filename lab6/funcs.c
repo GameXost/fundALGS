@@ -5,7 +5,7 @@
 
 
 double f_a(double x, const double e) {
-	if (fabs(x) < e) {
+	if (fabs(x) <= e) {
 		return 1.0;
 	}
 	return log(1 + x) / x;
@@ -20,6 +20,9 @@ double f_c(double x, const double e){
 }
 
 double f_d(double x, const double e){
+	if (fabs(x) <= e) {
+		return 1.0;
+	}
 	return pow(x, x);
 }
 
@@ -42,13 +45,13 @@ int trapTrap(double a, double b, const double e, double (*func)(double, double),
 			sum += func(a + (2 * i + 1) * h, e);
 		}
 		double newI = I * 0.5 + h * sum;
-		if (fabs(newI - I) / 3.0 < e) {
+		if (fabs(newI - I) < e) {
 			*res = newI;
 			return OK;
 		}
 		I = newI;
 	}
 	*res = I;
-	return NUM_OVERFLOW;
+	return NO_SOLUTION;
 
 }

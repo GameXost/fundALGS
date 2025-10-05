@@ -1,7 +1,6 @@
 #include "additional.h"
 #include <stdio.h>
 
-#include "../lab1/additional.h"
 
 int main(int argc, char **argv) {
 

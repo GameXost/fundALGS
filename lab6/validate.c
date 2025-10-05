@@ -7,13 +7,16 @@ void handleError(ReturnCode status) {
             printf("function completed successfully\n");
             break;
         case INVALID_INPUT:
-            printf("error occured: invalid input data received\n\n");
+            printf("error occured: invalid input data received\n");
             break;
         case NUM_OVERFLOW:
             printf("error occured: number overflow\n");
             break;
         case INVALID_NUMBER_INPUT:
             printf("error occured. incorrect number received\n");
+            break;
+        case NO_SOLUTION:
+            printf("no solutions were found\n");
             break;
     }
 }

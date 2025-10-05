@@ -28,6 +28,8 @@ int main(int argc, char **argv) {
         handleError(status);
         return status;
     }
+    printf("Integr for a: %f\n", resA);
+
 
     double z = sqrt(2.0 * log(1.0/e));
     status = trapTrap(-z, z, e, f_b, &resB);
@@ -35,23 +37,24 @@ int main(int argc, char **argv) {
         handleError(status);
         return status;
     }
+    printf("Integr for b: %f\n", resB);
+
 
     double delt = e / log(1.0 / e);
-    status = trapTrap(0.0, 1.0 - delt, e, f_c, &resC) + (-delt * log(delt) + delt);
+    status = trapTrap(0.0, 1.0 - delt, e, f_c, &resC);
     if (status != OK) {
         handleError(status);
         return status;
     }
+    resC  += (-delt * log(delt) + delt);
+    printf("Integr for c: %f\n", resC);
+
 
     status = trapTrap(0.0, 1.0, e, f_d, &resD);
     if (status != OK) {
         handleError(status);
         return status;
     }
-
-    printf("Integr for a: %f\n)", resA);
-    printf("Integr for b: %f\n", resB);
-    printf("Integr for c: %f\n", resC);
     printf("integr for d: %f\n", resD);
 
     return OK;

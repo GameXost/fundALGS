@@ -4,7 +4,8 @@ typedef enum ReturnCode {
     OK = 0,
     INVALID_INPUT,
     INVALID_NUMBER_INPUT,
-    NUM_OVERFLOW
+    NUM_OVERFLOW,
+    NO_SOLUTION
 } ReturnCode;
 
 double f_a(double x, const double e);
