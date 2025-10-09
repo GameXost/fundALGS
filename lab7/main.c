@@ -4,23 +4,22 @@
 
 int main(int argc, char **argv) {
 
-    if (argc < 3) {
+    if (argc != 3) {
         handleError(INVALID_INPUT);
         return INVALID_INPUT;
     }
 
-    const char *inputFileName = argv[1];
-    const char *outputFileName = argv[2];
 
 
-    FILE *inputFile = fopen(inputFileName, "r");
+
+    FILE *inputFile = fopen(argv[1], "r");
     if (inputFile == NULL) {
         handleError(ERROR_FILE_OPENING);
         return ERROR_FILE_OPENING;
     }
 
 
-    FILE *outputFile = fopen(outputFileName, "w");
+    FILE *outputFile = fopen(argv[2], "w");
     if (outputFile == NULL) {
         fclose(inputFile);
         handleError(ERROR_FILE_OPENING);
@@ -28,10 +27,38 @@ int main(int argc, char **argv) {
     }
 
 
-    char *str[16192];
-    ReturnCode status =
+    int numsCnt = 0;
+    int numsSkipped = 0;
+    ReturnCode finStatus = OK;
+    while (1) {
+        Number num = {NULL, NULL, 0, '+'};
+        ReturnCode status = readNumberString(inputFile, &num);
+        if (status != OK) {
+            handleError(status);
+            freeNum(&num);
+            finStatus = status;
+            break;
+        }
 
+        if (num.originalNumber == NULL) {
+            break;
+        }
+        status = fullProcess(&num);
+        if (status == OK) {
+            status = writeResult(outputFile, &num);
+            if (status != OK) {
+                handleError(status);
+                freeNum(&num);
+                finStatus = status;
+                break;
+            }
+            numsCnt++;
+        } else {
+            numsSkipped++;
+        }
+        freeNum(&num);
+    }
     fclose(inputFile);
     fclose(outputFile);
-
+    return finStatus;
 }

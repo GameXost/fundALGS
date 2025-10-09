@@ -17,6 +17,12 @@ void handleError(ReturnCode status) {
         case ERROR_INVALID_DIG:
             printf("wtf how u did it ???\n");
             break;
+        case ERROR_FILE_WRITING:
+            printf("occured error while writing in file\n");
+            break;
+        case INVALID_NUMBER_INPUT:
+            printf("gotten numbers is invalid\n");
+            break;
     }
 }
 

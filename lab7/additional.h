@@ -6,7 +6,10 @@ typedef enum {
     INVALID_INPUT,
     ERROR_FILE_OPENING,
     ERROR_MEMORY_ALLOCATION,
-    ERROR_INVALID_DIG
+    ERROR_INVALID_DIG,
+    ERROR_FILE_WRITING,
+    INVALID_NUMBER_INPUT
+
 }ReturnCode;
 
 typedef struct {
@@ -26,4 +29,7 @@ int parseAndValidate(Number *num);
 
 int findMinBase(Number *num);
 int toDecimal(Number *num);
+int writeResult(FILE *output, Number *num);
+int fullProcess(Number *num);
+void freeNum(Number *num);
 int writeResult(FILE *output, Number *num);

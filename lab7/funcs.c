@@ -5,23 +5,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../lab6/additional.h"
-//DONE:
-
-//TODO: func for reading nums ignoring tabs/spaces/ so on
-//TODO: func for formatting the input num
-
-//NEXT TO DO
-//TODO: func for finding the lowest system base
-//TODO func for converting to decimal system
-//TODO: func for writing the num into the output file
-
-//the result of the below is a string consists of [2, 36] s.s. symbols and + - need to be validated properly in next func
-
 int readNumberString(FILE *inputFile, Number *Num) {
-
     int c = 0;
-    bool flag = true;
+    bool flag = false;
     size_t curSize = 0;
     size_t capacity = 16;
 
@@ -31,20 +17,17 @@ int readNumberString(FILE *inputFile, Number *Num) {
     }
 
     while ((c = getc(inputFile)) != EOF) {
-        if (c == '\t' || c == '\n' || c == ' ') {
-            if (curSize != 0 && flag) {
-                buf[curSize] = '\0';
-                Num->originalNumber = buf;
-                return OK;
+        if (isspace(c)) {
+            if (flag) {
+                break;
+            } else {
+                continue;
             }
-
-            curSize = 0;
-            flag = true;
-            continue;
         }
-
-
-        if (flag == false){
+        if (!isalnum(c) && c != '+' && c != '-'){
+            while ((c = getc(inputFile)) != EOF && !isspace(c)){}
+            curSize = 0;
+            flag = false;
             continue;
         }
 
@@ -58,24 +41,31 @@ int readNumberString(FILE *inputFile, Number *Num) {
             }
             buf = newBuf;
         }
-
-        if (('0' <= c && c <= '9') || ('a' <= c && c <= 'z') ||  ('A' <= c && c <= 'Z') || (c == '-' || c == '+')){
-            buf[curSize++] = c;
-        } else {
-            flag = false;
-            curSize = 0;
-        }
+        buf[curSize++] = (char)c;
+        flag = true;
     }
-    if (curSize > 0 && flag) {
-        buf[curSize] = '\0';
-        Num->originalNumber = buf;
+    if (!flag) {
+        free(buf);
+        Num->originalNumber = NULL;
         return OK;
     }
+
+    // завершаем строку и возвращаем
+    buf[curSize] = '\0';
+    char *res = malloc(curSize + 1);
+    //fprintf(stderr, "[DEBUG readNumberString] Allocated new buffer at %p for '%s'\n",
+      //      (void*)res, buf);
+    if (res == NULL) {
+        free(buf);
+        Num->originalNumber = NULL;
+        return ERROR_MEMORY_ALLOCATION;
+    }
+
+    strcpy(res, buf);
+    Num->originalNumber = res;
     free(buf);
-    Num->originalNumber = NULL;
     return OK;
 }
-
 
 //the func below normalizuet number, if there is any extra - || +, the number is incorrect, also deletes extra zeroes in front
 int parseAndValidate(Number *num) {
@@ -144,6 +134,9 @@ int findMinBase(Number *num) {
             val = ch - '0' + 1;
         }
         curBase = (curBase > val) ? curBase: val;
+    }
+    if (curBase > 36) {
+        return INVALID_INPUT;
     }
     num->base = curBase;
     return OK;
@@ -281,3 +274,70 @@ int toDec(char *numStr, int base, char **outRes) {
     return OK;
 
 }
+
+
+
+int writeResult(FILE *output, Number *num) {
+    if (output == NULL || num == NULL) {
+        return INVALID_INPUT;
+    }
+
+    if (num->originalNumber == NULL || num->decimalNumber == NULL) {
+        return INVALID_INPUT;
+    }
+
+    int written = fprintf(
+        output,
+        "%s%s %d %s%s\n",
+        (num->znak=='-') ? "-": "+",
+        num->originalNumber,
+        num->base,
+        (num->znak == '-') ? "-": "+",
+        num->decimalNumber
+        );
+    if (written < 0) {
+        return ERROR_FILE_WRITING;
+    }
+    return OK;
+}
+
+void freeNum(Number *num) {
+    if (num == NULL) {
+        return;
+    }
+    if (num -> originalNumber != NULL) {
+        free(num->originalNumber);
+        num->originalNumber  = NULL;
+    }
+    if (num -> decimalNumber != NULL) {
+        free(num->decimalNumber);
+        num->decimalNumber = NULL;
+    }
+    return;
+}
+
+
+
+int fullProcess(Number *num) {
+    ReturnCode status = parseAndValidate(num);
+    if (status != OK) {
+        return status;
+    }
+    status = findMinBase(num);
+    if (status != OK) {
+        return status;
+    }
+
+    status = toDec(num->originalNumber, num->base, &num->decimalNumber);
+    if (status != OK) {
+        return status;
+    }
+
+    return OK;
+
+}
+
+
+
+
+
