@@ -40,12 +40,6 @@ int readNumberString(FILE *inputFile, Number *Num) {
 
             curSize = 0;
             flag = true;
-            free(buf);
-            capacity = 16;
-            buf = (char*)malloc(capacity * sizeof(char));
-            if (buf == NULL) {
-                return ERROR_MEMORY_ALLOCATION;
-            }
             continue;
         }
 
@@ -69,6 +63,7 @@ int readNumberString(FILE *inputFile, Number *Num) {
             buf[curSize++] = c;
         } else {
             flag = false;
+            curSize = 0;
         }
     }
     if (curSize > 0 && flag) {
@@ -84,7 +79,9 @@ int readNumberString(FILE *inputFile, Number *Num) {
 
 //the func below normalizuet number, if there is any extra - || +, the number is incorrect, also deletes extra zeroes in front
 int parseAndValidate(Number *num) {
-
+    if (num == NULL || num -> originalNumber == NULL) {
+        return INVALID_NUMBER_INPUT;
+    }
     char *inputNum = num->originalNumber;
 
     if (*inputNum == '-') {
@@ -106,7 +103,16 @@ int parseAndValidate(Number *num) {
     }
 
     if (*inputNum == '\0') {
-        return INVALID_NUMBER_INPUT;
+        char *outputNum = (char*)malloc(sizeof(char) * 2);
+        if (outputNum == NULL) {
+            return ERROR_MEMORY_ALLOCATION;
+        }
+        outputNum[0] = '0';
+        outputNum[1] = '\0';
+        free(num->originalNumber);
+        num->originalNumber = outputNum;
+        num->znak = '+';
+        return OK;
     }
 
     for (char *check = inputNum; *check; check++) {
@@ -152,21 +158,23 @@ int charToVal(char c) {
     if (isalpha(c)) {
         return tolower(c) - 'a'+10;
     }
+    return  -1;
 }
 
 int multipleString(char *numStr, int base, char **strRes) {
     int len = strlen(numStr);
-    int ost = 0;
+    long long ost = 0;
     int cap = len + 10;
     char *res = (char*)malloc(sizeof(char) * cap);
     if (res == NULL) {
+        *strRes = NULL;
         return ERROR_MEMORY_ALLOCATION;
     }
     int ind = 0;
 
     for (int i = len - 1; i >= 0; i--) {
         int dig = numStr[i] - '0';
-        int prod = dig * base + ost;
+        long long prod = dig * base + ost;
         res[ind++] = (prod % 10) + '0';
         ost = prod / 10;
     }
@@ -176,6 +184,8 @@ int multipleString(char *numStr, int base, char **strRes) {
             cap *= 2;
             char *temp = (char*)realloc(res, cap);
             if (temp == NULL) {
+                free(res);
+                *strRes = NULL;
                 return ERROR_MEMORY_ALLOCATION;
             }
             res = temp;
@@ -197,16 +207,17 @@ int multipleString(char *numStr, int base, char **strRes) {
 
 int incrementStr(char *numStr, int increm, char **strRes) {
     int len = strlen(numStr);
-    int ost = increm;
+    long long ost = increm;
     int cap = len + 10;
     int ind = 0;
     char *res = (char*)malloc(sizeof(char) * cap);
     if (res == NULL) {
+        *strRes = NULL;
         return ERROR_MEMORY_ALLOCATION;
     }
     for (int i = len - 1; i >= 0; i--) {
         int dig = numStr[i] - '0';
-        int sum = dig + ost;
+        long long sum = dig + ost;
         res[ind++] = (sum % 10) + '0';
         ost = sum / 10;
     }
@@ -215,6 +226,8 @@ int incrementStr(char *numStr, int increm, char **strRes) {
             cap *= 2;
             char *temp = (char*)realloc(res, sizeof(char) * cap);
             if (temp == NULL) {
+                free(res);
+                *strRes = NULL;
                 return ERROR_MEMORY_ALLOCATION;
             }
             res = temp;
