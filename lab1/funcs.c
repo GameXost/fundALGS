@@ -3,6 +3,8 @@
 #include <limits.h>
 #include <math.h>
 #include <stddef.h>
+#include <stdlib.h>
+#include <string.h>
 
 // -h числа в пределах 100 кратные number
 int kratno(int number, int *res, int *size) {
@@ -96,7 +98,7 @@ int stepenb(int number,int (*res)[11], int *size) {
 }
 
 //-s перевод в 16 систему
-int hexNumber(const char *numStr, char *res) {
+int hexNumber(const char *numStr, char **res) {
 
 	if (numStr == NULL){
 		return INVALID_NUMBER_INPUT;
@@ -106,56 +108,74 @@ int hexNumber(const char *numStr, char *res) {
 	while (*p == '0'){
 		p++;
 	}
+	const char digits[] = "0123456789ABCDEF";
+	int resLen = 0;
+	int base = 16;
+	int cap = 16;
+	int *resDig = (int*)malloc(sizeof(int) * cap);
+	if (resDig == NULL) {
+		return MEM_ALLOCATION_ERROR;
+	}
 
-	if(*p == '\0'){
-		res[0] = '0';
-		res[1] = '\0';
+
+	if (*p == '\0') {
+		*res = (char*)malloc(2);
+		if (*res == NULL) {
+			free(resDig);
+			return MEM_ALLOCATION_ERROR;
+		}
+		strcpy(*res, "0");
+		free(resDig);
 		return OK;
 	}
 
-	const char digits[] = "0123456789ABCDEF";
-	int hexDigits[1024];
-	int length = 0;
+	while (*p) {
+		if (*p < '0' || *p > '9') {
+			free(resDig);
+			return INVALID_INPUT;
+		}
+		int digit = *p - '0';
+		int  ost = digit;
 
-	for(const char *p = numStr; *p; p++){
-		int d = *p - '0';
-		unsigned next = 0;
-		for(int i = 0; i < length; i++){
-			unsigned val = (unsigned)hexDigits[i] * 10U + next;
-			hexDigits[i] = val % 16;
-			next = val / 16;
+		for (int i = 0; i < resLen; i++) {
+			int val = resDig[i] * 10 + ost;
+			resDig[i] = val % base;
+			ost = val / base;
 		}
-		while (next > 0){
-			if (length >=1024){
-				return NUM_OVERFLOW;
+
+		while (ost > 0) {
+			if (resLen >= cap) {
+				cap *= 2;
+				int *temp = (int*)realloc(resDig, sizeof(int) * cap);
+				if (temp == NULL) {
+					free(resDig);
+					return  MEM_ALLOCATION_ERROR;
+				}
+				resDig = temp;
 			}
-			hexDigits[length++] = next % 16;
-			next /= 16;
+
+			resDig[resLen++] = ost % base;
+			ost /= base;
+
 		}
-		next = (unsigned)d;
-		for(int i = 0; i < length; i++){
-			unsigned val = (unsigned)hexDigits[i] + next;
-			hexDigits[i] = val % 16;
-			next  = val / 16;
-			if (next  == 0){
-				break;
-			}
-		}
-		while(next > 0){
-			if (length >= 1024){
-				return NUM_OVERFLOW;
-			}
-			hexDigits[length++] = next % 16;
-			next /= 16;
-		}
+
+		p++;
 	}
-	int ind = 0;
-	for(int i = length - 1; i >= 0; i--){
-		res[ind++] = digits[hexDigits[i]];
+
+	*res = malloc(resLen + 1);
+	if (!*res) {
+		free(resDig);
+		return MEM_ALLOCATION_ERROR;
 	}
-	res[ind] = '\0';
+	for (int i = 0; i < resLen; i++) {
+		(*res)[i] = digits[resDig[resLen - 1 - i]];
+	}
+	(*res)[resLen] = '\0';
+	free(resDig);
 	return OK;
 }
+
+
 
 
 

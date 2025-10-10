@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+
 #include "additional.h"
 //TODO: -s в переводе в 16 ричную систему исключить оверфлоу, в 
 int main(int argc, char *argv[]) {
@@ -104,17 +106,19 @@ int main(int argc, char *argv[]) {
 
 
 	} else if (flag == 's') {
-		char hexRes[1024];
+		char *hexRes;
 		
-		ReturnCode status = hexNumber(numberInp, hexRes);
+		ReturnCode status = hexNumber(numberInp, &hexRes);
 		if (status != OK) {
 			handleError(status);
+			free(hexRes);
 			return status;
 		}
 		for (int i = 0; hexRes[i] != '\0'; i++ ) {
 			printf("%c ", hexRes[i]);
 		}
 		printf("\n");
+		free(hexRes);
 		return status;
 		
 

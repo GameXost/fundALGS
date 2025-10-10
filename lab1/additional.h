@@ -17,6 +17,7 @@ typedef enum ReturnCode {
 	NUM_OVERFLOW,
 	MEM_ALLOCATION_ERROR,
 
+
 }ReturnCode;
 
 
@@ -29,4 +30,4 @@ int simple(int number, PrimeStatus *status);
 int sum(int number, int *res);
 int factorial(int number, long long *res);
 int stepenb(int number,int (*res)[11], int *size);
-int hexNumber(const char *numStr, char *res);
+int hexNumber(const char *numStr, char **res);

@@ -372,7 +372,7 @@ int toBase(Number *num, int base, char **res) {
     const char *p = num->decimalNumber;
 
     if (*p == '\0') {
-        *res = malloc(2);
+        *res = (char*)malloc(2);
         if (*res == NULL) {
             free(resDig);
             return ERROR_MEMORY_ALLOCATION;
