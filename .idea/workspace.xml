@@ -23,6 +23,7 @@
     <generated>
       <config projectName="Labs" targetName="lab2" />
       <config projectName="Labs" targetName="lab1" />
+      <config projectName="Labs" targetName="lab7" />
       <config projectName="Labs" targetName="lab6" />
       <config projectName="Labs" targetName="lab5" />
       <config projectName="Labs" targetName="lab3" />
@@ -36,7 +37,8 @@
   <component name="ChangeListManager">
     <list default="true" id="da73f76c-cabb-4304-85aa-12cddc756869" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab7/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/lab7/funcs.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab1/validate.c" beforeDir="false" afterPath="$PROJECT_DIR$/lab1/validate.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +174,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/MAI/3semestr/algosi/lab6&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/MAI/3semestr/algosi/lab8&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -184,6 +186,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\MAI\3semestr\algosi\lab8" />
+      <recent name="D:\MAI\3semestr\algosi\lab7" />
       <recent name="D:\MAI\3semestr\algosi\lab6" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -196,6 +200,11 @@
     </option>
   </component>
   <component name="RunManager" selected="CMake Application.lab6">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="lab1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Labs" TARGET_NAME="lab1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Labs" RUN_TARGET_NAME="lab1">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -221,6 +230,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="lab7" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Labs" TARGET_NAME="lab7" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Labs" RUN_TARGET_NAME="lab7">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="main.c" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Labs" TARGET_NAME="main.c" CONFIG_NAME="main.c">
       <option name="sourceFile" value="lab7\main.c" />
       <method v="2">
@@ -228,12 +242,13 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="C/C++ File.main.c" />
       <item itemvalue="CMake Application.lab1" />
       <item itemvalue="CMake Application.lab2" />
       <item itemvalue="CMake Application.lab3" />
       <item itemvalue="CMake Application.lab5" />
       <item itemvalue="CMake Application.lab6" />
-      <item itemvalue="C/C++ File.main.c" />
+      <item itemvalue="CMake Application.lab7" />
     </list>
     <recent_temporary>
       <list>
@@ -260,6 +275,8 @@
       <workItem from="1759665658167" duration="11636000" />
       <workItem from="1759692289350" duration="10522000" />
       <workItem from="1759948503901" duration="19000" />
+      <workItem from="1760027309936" duration="14244000" />
+      <workItem from="1760082055836" duration="8196000" />
     </task>
     <servers />
   </component>
@@ -307,12 +324,9 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/lab6/main.c</url>
-          <line>6</line>
-          <properties>
-            <option name="hitCountValue" value="1" />
-          </properties>
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/lab7/validate.c</url>
+          <line>20</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

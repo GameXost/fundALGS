@@ -22,6 +22,7 @@ void handleError(ReturnCode status) {
 		case INVALID_FLAG_INPUT:
 			printf("error occured incorrect flag received\n");
 			return;
+
 	}
 	return;
 
