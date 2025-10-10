@@ -168,7 +168,7 @@ int multipleString(char *numStr, int base, char **strRes) {
     for (int i = len - 1; i >= 0; i--) {
         int dig = numStr[i] - '0';
         long long prod = dig * base + ost;
-        res[ind++] = (prod % 10) + '0';
+        res[ind++] = (char)((prod % 10) + '0');
         ost = prod / 10;
     }
 
@@ -183,7 +183,7 @@ int multipleString(char *numStr, int base, char **strRes) {
             }
             res = temp;
         }
-        res[ind++] = (ost % 10) + '0';
+        res[ind++] = (char)((ost % 10) + '0');
         ost /= 10;
     }
     res[ind] = '\0';
@@ -211,7 +211,7 @@ int incrementStr(char *numStr, int increm, char **strRes) {
     for (int i = len - 1; i >= 0; i--) {
         int dig = numStr[i] - '0';
         long long sum = dig + ost;
-        res[ind++] = (sum % 10) + '0';
+        res[ind++] = (char)((sum % 10) + '0');
         ost = sum / 10;
     }
     while (ost > 0) {
@@ -225,7 +225,7 @@ int incrementStr(char *numStr, int increm, char **strRes) {
             }
             res = temp;
         }
-        res[ind++] = (ost % 10) + '0';
+        res[ind++] = (char)((ost % 10) + '0');
         ost /= 10;
     }
     res[ind] = '\0';
