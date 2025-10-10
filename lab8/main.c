@@ -5,6 +5,7 @@
 #include "additional.h"
 
 int main() {
+
     int base;
     if (scanf("%d", &base) != 1) {
         handleError(INVALID_INPUT);
@@ -17,6 +18,7 @@ int main() {
 
     Number maxim = {NULL, NULL, NULL, NULL, NULL, NULL, base, '+'};;
     while(1) {
+
         Number num = {NULL, NULL, NULL, NULL, NULL, NULL, base, '+'};
         ReturnCode status = readNumberString(&num);
         if (status != OK) {
@@ -37,6 +39,8 @@ int main() {
         }
         freeNum(&num);
     }
+    printf("BASIC decimal number: %s\n", maxim.decimalNumber);
+
 
 
     ReturnCode status = toBase(&maxim, 9, &maxim.nine);
@@ -44,17 +48,32 @@ int main() {
         handleError(status);
         return status;
     }
-
-    printf("decimal %s\n", maxim.decimalNumber);
     printf("nine: %s\n", maxim.nine);
 
+
+
+
     status = toBase(&maxim, 18, &maxim.eighteen);
+    if (status != OK) {
+        handleError(status);
+        return status;
+    }
     printf("eighteen: %s\n", maxim.eighteen);
 
+
     status = toBase(&maxim, 27, &maxim.twentySeven);
+    if (status != OK) {
+        handleError(status);
+        return status;
+    }
     printf("twentySeven: %s\n", maxim.twentySeven);
 
+
     status = toBase(&maxim, 36, &maxim.thirtySix);
+    if (status != OK) {
+        handleError(status);
+        return status;
+    }
     printf("thirtySix: %s\n", maxim.thirtySix);
 
 

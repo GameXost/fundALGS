@@ -37,8 +37,7 @@
   <component name="ChangeListManager">
     <list default="true" id="da73f76c-cabb-4304-85aa-12cddc756869" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab1/validate.c" beforeDir="false" afterPath="$PROJECT_DIR$/lab1/validate.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab8/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/lab8/funcs.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +275,7 @@
       <workItem from="1759692289350" duration="10522000" />
       <workItem from="1759948503901" duration="19000" />
       <workItem from="1760027309936" duration="14244000" />
-      <workItem from="1760082055836" duration="8196000" />
+      <workItem from="1760082055836" duration="12367000" />
     </task>
     <servers />
   </component>

@@ -25,10 +25,12 @@ int readNumberString(Number *Num) {
             }
         }
         if (!isalnum(c) && c != '+' && c != '-'){
-            while ((c = getchar()) != EOF && !isspace(c)){}
+            while ((c = getchar()) != EOF && !isspace(c)){};
             curSize = 0;
             flag = false;
-            continue;
+            free(buf);
+            Num->originalNumber = NULL;
+            return INVALID_NUMBER_INPUT;
         }
 
         if (curSize + 1 >= capacity) {
@@ -44,12 +46,16 @@ int readNumberString(Number *Num) {
         buf[curSize++] = (char)c;
         flag = true;
     }
+
+
+    //если ниче не записали
     if (!flag) {
         free(buf);
         Num->originalNumber = NULL;
         return OK;
     }
 
+    //если всё норм
     buf[curSize] = '\0';
     char *res = malloc(curSize + 1);
     if (res == NULL) {
@@ -64,12 +70,14 @@ int readNumberString(Number *Num) {
     return OK;
 }
 
+
 int parseAndValidate(Number *num) {
     if (num == NULL || num -> originalNumber == NULL) {
         return INVALID_NUMBER_INPUT;
     }
     char *inputNum = num->originalNumber;
 
+    //парсим знак
     if (*inputNum == '-') {
         num->znak = '-';
         inputNum++;
@@ -81,6 +89,7 @@ int parseAndValidate(Number *num) {
         num->znak = '+';
     }
 
+    //нули лишние отбрасыываем
     while (*inputNum == '0' && *(inputNum+1) != '\0'){
         if (*inputNum == '-' || *inputNum == '+' || !isalnum(*inputNum)) {
             return INVALID_NUMBER_INPUT;
@@ -88,6 +97,8 @@ int parseAndValidate(Number *num) {
         inputNum++;
     }
 
+
+    //число 0
     if (*inputNum == '\0') {
         char *outputNum = (char*)malloc(sizeof(char) * 2);
         if (outputNum == NULL) {
@@ -109,11 +120,11 @@ int parseAndValidate(Number *num) {
             return INVALID_NUMBER_INPUT;
         }
     }
+
     char *outputNum = (char*)malloc(strlen(inputNum)+1);
     if (outputNum == NULL) {
         return ERROR_MEMORY_ALLOCATION;
     }
-
 
     strcpy(outputNum, inputNum);
     free(num->originalNumber);
@@ -151,12 +162,15 @@ int charToVal(char c) {
     }
     return  -1;
 }
+
+
 int valToChar(int val) {
     if (val < 10) {
         return '0' + val;
     }
     return 'A' + (val - 10);
 }
+
 
 int multipleString(char *numStr, int base, char **strRes) {
     int len = strlen(numStr);
@@ -172,7 +186,7 @@ int multipleString(char *numStr, int base, char **strRes) {
     for (int i = len - 1; i >= 0; i--) {
         int dig = numStr[i] - '0';
         long long prod = dig * base + ost;
-        res[ind++] = (prod % 10) + '0';
+        res[ind++] = (char)((prod % 10) + '0');
         ost = prod / 10;
     }
 
@@ -187,7 +201,7 @@ int multipleString(char *numStr, int base, char **strRes) {
             }
             res = temp;
         }
-        res[ind++] = (ost % 10) + '0';
+        res[ind++] = (char)((ost % 10) + '0');
         ost /= 10;
     }
     res[ind] = '\0';
@@ -215,7 +229,7 @@ int incrementStr(char *numStr, int increm, char **strRes) {
     for (int i = len - 1; i >= 0; i--) {
         int dig = numStr[i] - '0';
         long long sum = dig + ost;
-        res[ind++] = (sum % 10) + '0';
+        res[ind++] = (char)((sum % 10) + '0');
         ost = sum / 10;
     }
     while (ost > 0) {
@@ -229,7 +243,7 @@ int incrementStr(char *numStr, int increm, char **strRes) {
             }
             res = temp;
         }
-        res[ind++] = (ost % 10) + '0';
+        res[ind++] = (char)((ost % 10) + '0');
         ost /= 10;
     }
     res[ind] = '\0';
@@ -251,9 +265,10 @@ int toDec(char *numStr, int base, char **outRes) {
     res[0] = '0';
     res[1] = '\0';
 
+
     for(int i = 0; numStr[i]; i++) {
         int dig = charToVal(numStr[i]);
-        if (dig < 0|| dig >= base) {
+        if (dig < 0 || dig >= base) {
             free(res);
             *outRes = NULL;
             return ERROR_INVALID_DIG;
@@ -339,31 +354,39 @@ int moreThan(Number *num, Number *maxim) {
 
 
 int toBase(Number *num, int base, char **res) {
-    if (num == NULL || num->decimalNumber == NULL || res == NULL)
+    if (num == NULL || num->decimalNumber == NULL || res == NULL) {
         return INVALID_POINTER;
-
-    if (base < 2 || base > 36)
+    }
+    if (base < 2 || base > 36) {
         return INVALID_INPUT;
+    }
 
     const char digits[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    int resDig[4096] = {0};
     int resLen = 0;
+    int cap = 16;
+    int *resDig = (int*)malloc(sizeof(int) * cap);
+    if (resDig == NULL) {
+        return ERROR_MEMORY_ALLOCATION;
+    }
 
-    // пропуск ведущих нулей
     const char *p = num->decimalNumber;
-    while (*p == '0') p++;
 
     if (*p == '\0') {
         *res = malloc(2);
-        if (!*res) return ERROR_MEMORY_ALLOCATION;
+        if (*res == NULL) {
+            free(resDig);
+            return ERROR_MEMORY_ALLOCATION;
+        }
         strcpy(*res, "0");
+        free(resDig);
         return OK;
     }
 
     while (*p) {
-        if (*p < '0' || *p > '9')
+        if (*p < '0' || *p > '9') {
+            free(resDig);
             return INVALID_INPUT;
-
+        }
         int digit = *p - '0';
         int  ost = digit;
 
@@ -374,23 +397,34 @@ int toBase(Number *num, int base, char **res) {
         }
 
         while (ost > 0) {
-            if (resLen >= 4096)
-                return INVALID_NUMBER_INPUT;
+            if (resLen >= cap) {
+                cap *= 2;
+                int *temp = (int*)realloc(resDig, sizeof(int) * cap);
+                if (temp == NULL) {
+                    free(resDig);
+                    return  ERROR_MEMORY_ALLOCATION;
+                }
+                resDig = temp;
+            }
+
             resDig[resLen++] = ost % base;
             ost /= base;
+
         }
 
         p++;
     }
 
     *res = malloc(resLen + 1);
-    if (!*res)
+    if (!*res) {
+        free(resDig);
         return ERROR_MEMORY_ALLOCATION;
-
-    for (int i = 0; i < resLen; i++)
+    }
+    for (int i = 0; i < resLen; i++) {
         (*res)[i] = digits[resDig[resLen - 1 - i]];
-
+    }
     (*res)[resLen] = '\0';
+    free(resDig);
     return OK;
 }
 
