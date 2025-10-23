@@ -38,8 +38,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da73f76c-cabb-4304-85aa-12cddc756869" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pak2/lab1/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak2/lab1/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pak2/lab1/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak2/lab1/funcs.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

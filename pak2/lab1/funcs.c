@@ -49,8 +49,10 @@ int ifThen(Array *res, int base, int cnt, ...) {
     va_start(args, cnt);
     for (int i = 0; i < cnt; i++) {
         double x = va_arg(args, double);
+        if (x <= 0 || x >= 1) {
+            continue;
+        }
         Fraction f = doubleToFract(x);
-
         if (checkProper(f, base)) {
             if (res->size >= res->capacity) {
                 res->capacity *= 2;
