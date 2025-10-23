@@ -30,42 +30,6 @@
   <component name="ChangeListManager">
     <list default="true" id="da73f76c-cabb-4304-85aa-12cddc756869" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab1/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab1/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab1/additional.h" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab1/additional.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab1/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab1/funcs.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab1/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab1/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab1/validate.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab1/validate.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab2/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/funcs_struct.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab2/funcs_struct.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/lab2_additional.h" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab2/lab2_additional.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab2/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/validation.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab2/validation.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab3/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/additional.h" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab3/additional.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab3/funcs.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab3/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/validate.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab3/validate.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab5/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab5/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab5/additional.h" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab5/additional.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab5/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab5/funcs.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab5/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab5/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab5/validate.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab5/validate.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab6/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab6/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab6/additional.h" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab6/additional.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab6/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab6/funcs.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab6/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab6/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab6/validate.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab6/validate.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab7/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab7/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab7/additional.h" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab7/additional.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab7/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab7/funcs.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab7/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab7/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab7/validate.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab7/validate.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab8/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab8/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab8/additional.h" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab8/additional.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab8/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab8/funcs.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab8/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab8/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab8/validate.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab8/validate.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +183,7 @@
       <workItem from="1760027309936" duration="14244000" />
       <workItem from="1760082055836" duration="17612000" />
       <workItem from="1760530532032" duration="30000" />
-      <workItem from="1761213333087" duration="251000" />
+      <workItem from="1761213333087" duration="942000" />
     </task>
     <servers />
   </component>
