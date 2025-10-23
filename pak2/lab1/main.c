@@ -3,12 +3,12 @@
 #include "additional.h"
 
 #define COUNTER 30
-#define ARGS 0.1, 0.125, 0.14285714285714, 0.16666666666666, 0.2, 0.25, 0.3, 0.33333333333333, 0.375, 0.4, 0.42857142857142, 0.5, 0.55555555555555, 0.6, 0.625, 0.66666666666666, 0.7, 0.75, 0.77777777777777, 0.8, 0.83333333333333, 0.85714285714285, 0.875, 0.88888888888888, 0.9, 0.11111111111111, 0.22222222222222, 0.44444444444444, 0.71428571428571, 0.05
+#define ARGS -0.1, 0.125, 0.14285714285714, 0.16666666666666, 0.2, 0.25, 0.3, 0.3, 0.375, 0.4, 0.42857142857142, 0.5, 0.55555555555555, 0.6, 0.625, 0.66666666666666, 0.7, 0.75, 0.77777777777777, 0.8, 0.83333333333333, 0.85714285714285, 0.875, 0.88888888888888, 0.9, 0.11111111111111, 0.22222222222222, 0.44444444444444, 0.71428571428571, 0.05
 
 
 int main(int argc, char **argv){
-    // 0 - имя проги, 1 -система счисления, остальное - дроби в С. С.
-    if (argc < 2) {
+
+    if (argc != 2) {
         handleError(INVALID_INPUT);
         return INVALID_INPUT;
     }
@@ -26,20 +26,14 @@ int main(int argc, char **argv){
         handleError(MEMORY_ALLOCATING_ERROR);
         return MEMORY_ALLOCATING_ERROR;
     }
-    for (int c = 2; c < 36; c++) {
-        res.size = 0;
-        printf("base: %d\n\n", c);
-        ReturnCode status = ifThen(&res, c, COUNTER, ARGS);
-        if (status != OK) {
-            handleError(status);
-            return status;
-        }
-        for (int i = 0; i < res.size; i++) {
-            printf("%.15lf\n", res.data[i]);
-        }
+
+    ReturnCode status = ifThen(&res, base, COUNTER, ARGS);
+    if (status != OK) {
+        handleError(status);
+        return status;
+    }
+    for (int i = 0; i < res.size; i++) {
+        printf("%.15lf\n", res.data[i]);
     }
     return OK;
-
-
-
 }

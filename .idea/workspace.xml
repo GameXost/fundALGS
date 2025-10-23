@@ -39,7 +39,7 @@
   <component name="ChangeListManager">
     <list default="true" id="da73f76c-cabb-4304-85aa-12cddc756869" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pak1/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pak2/lab1/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak2/lab1/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -984,7 +984,7 @@
     </option>
   </component>
   <component name="RunManager" selected="CMake Application.lab01">
-    <configuration name="lab01" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="3" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/pak2/lab1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="algosi" TARGET_NAME="lab01" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="algosi" RUN_TARGET_NAME="lab01">
+    <configuration name="lab01" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="10" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/pak2/lab1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="algosi" TARGET_NAME="lab01" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="algosi" RUN_TARGET_NAME="lab01">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -1126,13 +1126,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/pak2/lab1/funcs.c</url>
-          <line>33</line>
+          <line>20</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/pak2/lab1/main.c</url>
-          <line>8</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
