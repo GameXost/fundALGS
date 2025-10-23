@@ -20,14 +20,7 @@
     <option name="reloaded" value="true" />
   </component>
   <component name="CMakeRunConfigurationManager">
-    <generated>
-      <config projectName="Labs" targetName="lab2" />
-      <config projectName="Labs" targetName="lab1" />
-      <config projectName="Labs" targetName="lab7" />
-      <config projectName="Labs" targetName="lab6" />
-      <config projectName="Labs" targetName="lab5" />
-      <config projectName="Labs" targetName="lab3" />
-    </generated>
+    <generated />
   </component>
   <component name="CMakeSettings">
     <configurations>
@@ -37,7 +30,42 @@
   <component name="ChangeListManager">
     <list default="true" id="da73f76c-cabb-4304-85aa-12cddc756869" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab7/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/lab7/funcs.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab1/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab1/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab1/additional.h" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab1/additional.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab1/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab1/funcs.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab1/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab1/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab1/validate.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab1/validate.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab2/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/funcs_struct.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab2/funcs_struct.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/lab2_additional.h" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab2/lab2_additional.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab2/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/validation.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab2/validation.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab3/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/additional.h" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab3/additional.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab3/funcs.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab3/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/validate.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab3/validate.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab5/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/additional.h" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab5/additional.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab5/funcs.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab5/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/validate.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab5/validate.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab6/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab6/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab6/additional.h" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab6/additional.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab6/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab6/funcs.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab6/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab6/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab6/validate.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab6/validate.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab7/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab7/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab7/additional.h" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab7/additional.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab7/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab7/funcs.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab7/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab7/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab7/validate.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab7/validate.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab8/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab8/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab8/additional.h" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab8/additional.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab8/funcs.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab8/funcs.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab8/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab8/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab8/validate.c" beforeDir="false" afterPath="$PROJECT_DIR$/pak1/lab8/validate.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,70 +92,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pak1/lab8/funcs.c" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -156,33 +121,33 @@
     <option name="showScratchesAndConsoles" value="false" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;C/C++ File.main.c.executor&quot;: &quot;Debug&quot;,
-    &quot;CMake Application.lab1.executor&quot;: &quot;Run&quot;,
-    &quot;CMake Application.lab5.executor&quot;: &quot;Run&quot;,
-    &quot;CMake Application.lab6.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/MAI/3semestr/algosi/lab8&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.scopes&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "C/C++ File.main.c.executor": "Debug",
+    "CMake Application.lab1.executor": "Run",
+    "CMake Application.lab5.executor": "Run",
+    "CMake Application.lab6.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.west.config.association.type.startup.service": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/MAI/3semestr/algosi",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.scopes",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\MAI\3semestr\algosi\lab8" />
@@ -190,6 +155,7 @@
       <recent name="D:\MAI\3semestr\algosi\lab6" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\MAI\3semestr\algosi\pak1" />
       <recent name="D:\MAI\3semestr\algosi" />
     </key>
   </component>
@@ -204,32 +170,12 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="lab1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Labs" TARGET_NAME="lab1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Labs" RUN_TARGET_NAME="lab1">
+    <configuration name="lab5" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-a a.txt" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/bin" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="lab5" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="lab5">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="lab2" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Labs" TARGET_NAME="lab2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Labs" RUN_TARGET_NAME="lab2">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="lab3" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Labs" TARGET_NAME="lab3" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Labs" RUN_TARGET_NAME="lab3">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="lab5" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-a a.txt" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/bin" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Labs" TARGET_NAME="lab5" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Labs" RUN_TARGET_NAME="lab5">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="lab6" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="0.0001" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Labs" TARGET_NAME="lab6" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Labs" RUN_TARGET_NAME="lab6">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="lab7" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Labs" TARGET_NAME="lab7" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Labs" RUN_TARGET_NAME="lab7">
+    <configuration name="lab6" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="0.0001" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="lab6" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="lab6">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -242,12 +188,8 @@
     </configuration>
     <list>
       <item itemvalue="C/C++ File.main.c" />
-      <item itemvalue="CMake Application.lab1" />
-      <item itemvalue="CMake Application.lab2" />
-      <item itemvalue="CMake Application.lab3" />
       <item itemvalue="CMake Application.lab5" />
       <item itemvalue="CMake Application.lab6" />
-      <item itemvalue="CMake Application.lab7" />
     </list>
     <recent_temporary>
       <list>
@@ -275,7 +217,9 @@
       <workItem from="1759692289350" duration="10522000" />
       <workItem from="1759948503901" duration="19000" />
       <workItem from="1760027309936" duration="14244000" />
-      <workItem from="1760082055836" duration="16215000" />
+      <workItem from="1760082055836" duration="17612000" />
+      <workItem from="1760530532032" duration="30000" />
+      <workItem from="1761213333087" duration="251000" />
     </task>
     <servers />
   </component>
@@ -319,11 +263,11 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/lab5/main.c</url>
+          <url>file://$PROJECT_DIR$/pak1/lab5/main.c</url>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/lab7/validate.c</url>
+          <url>file://$PROJECT_DIR$/pak1/lab7/validate.c</url>
           <line>20</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
