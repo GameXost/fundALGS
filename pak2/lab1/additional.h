@@ -9,8 +9,8 @@ typedef enum {
 }ReturnCode;
 
 typedef struct {
-    long numer;
-    long denumer;
+    long long numer;
+    long long denumer;
 
 }Fraction;
 

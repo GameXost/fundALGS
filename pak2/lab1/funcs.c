@@ -1,18 +1,17 @@
-#include <stdarg.h>
 #include <math.h>
+#include <stdarg.h>
 #include <stdbool.h>
 #include <stdlib.h>
 
 #include "additional.h"
-// обрабатывает валист, вызывает чекер, записывает конечные дроби в массив
 
 
-long gcd(long a, long b) {
-    a = labs(a);
-    b = labs(b);
+long long gcd(long long a, long long b) {
+    a = llabs(a);
+    b = llabs(b);
     while (b) {
         a %= b;
-        long temp = a;
+        long long temp = a;
         a = b;
         b = temp;
     }
@@ -21,24 +20,26 @@ long gcd(long a, long b) {
 
 Fraction doubleToFract(double num) {
     Fraction res;
-    res.numer = (long)(num * 1e+12);
-    res.denumer = 1e+12;
+    //хуйня полная
+    long long multiply = 1000000000000000LL; // 1e+15
+    res.numer = (long long)(num * multiply);
+    res.denumer = multiply;
 
-    long divide = gcd(res.numer, res.denumer);
-    res.numer /= divide;
-    res.denumer /= divide;
+    long long commonDiv = gcd(res.numer, res.denumer);
+    res.numer /= commonDiv;
+    res.denumer /= commonDiv;
     return res;
 }
 
 //получает чисто число и базу, сообщает, конечная ли дробь
 bool checkProper(Fraction f, int base) {
-    long denum = f.denumer;
-    long divide = gcd(denum, base);
-    while (divide > 1) {
-        while (denum % divide == 0) {
-            denum /= divide;
+    long long denum = f.denumer;
+    long long commonDiv = gcd(denum, base);
+    while (commonDiv > 1) {
+        while (denum % commonDiv == 0) {
+            denum /= commonDiv;
         }
-        divide = gcd(denum, base);
+        commonDiv = gcd(denum, base);
     }
     return denum == 1;
 }
@@ -49,7 +50,7 @@ int ifThen(Array *res, int base, int cnt, ...) {
     va_start(args, cnt);
     for (int i = 0; i < cnt; i++) {
         double x = va_arg(args, double);
-        if (x <= 0 || x >= 1) {
+        if (x <= 1e-12 || x >= 1 - 1e-12) {
             continue;
         }
         Fraction f = doubleToFract(x);
