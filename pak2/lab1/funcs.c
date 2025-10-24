@@ -1,6 +1,7 @@
 #include <math.h>
 #include <stdarg.h>
 #include <stdbool.h>
+#include <stddef.h>
 #include <stdlib.h>
 
 #include "additional.h"
@@ -18,16 +19,20 @@ long long gcd(long long a, long long b) {
     return a;
 }
 
+// конвертит в правильную дробь конечную
 Fraction doubleToFract(double num) {
     Fraction res;
-    //хуйня полная
-    long long multiply = 1000000000000000LL; // 1e+15
-    res.numer = (long long)(num * multiply);
-    res.denumer = multiply;
-
-    long long commonDiv = gcd(res.numer, res.denumer);
-    res.numer /= commonDiv;
-    res.denumer /= commonDiv;
+    double frac = num;
+    long long denom = 1;
+    while (fabs(frac - round(frac)) > 1e-10 && denom < 1e12) {
+        frac *= 10.0;
+        denom *= 10;
+    }
+    res.numer = llround(frac);
+    res.denumer = denom;
+    long long g = gcd(res.numer, res.denumer);
+    res.numer /= g;
+    res.denumer /= g;
     return res;
 }
 
@@ -44,7 +49,7 @@ bool checkProper(Fraction f, int base) {
     return denum == 1;
 }
 
-
+// валист итерируется по аргмуентам функции
 int ifThen(Array *res, int base, int cnt, ...) {
     va_list args;
     va_start(args, cnt);
