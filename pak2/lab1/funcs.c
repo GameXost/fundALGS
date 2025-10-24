@@ -19,22 +19,41 @@ long long gcd(long long a, long long b) {
     return a;
 }
 
-// конвертит в правильную дробь конечную
+// конвертит в правильную дробь конечную  drob p/q
 Fraction doubleToFract(double num) {
-    Fraction res;
-    double frac = num;
-    long long denom = 1;
-    while (fabs(frac - round(frac)) > 1e-10 && denom < 1e12) {
-        frac *= 10.0;
-        denom *= 10;
+    const double EPS = 1e-12;
+    const long long MAX_DEN = 1e12;
+
+    long long a0 = floor(num);
+    double frac = num - a0;
+
+    if (fabs(frac) < EPS) {
+        return (Fraction){a0, 1};
     }
-    res.numer = llround(frac);
-    res.denumer = denom;
-    long long g = gcd(res.numer, res.denumer);
-    res.numer /= g;
-    res.denumer /= g;
-    return res;
+
+    long long p0 = 1, q0 = 0;
+
+    long long p1 = a0, q1 = 1;
+
+    double x = num;
+    while (true) {
+        x = 1.0 / (x - floor(x));
+        long long a = floor(x);
+        long long p2 = a * p1 + p0;
+        long long q2 = a * q1 + q0;
+
+        if (fabs(num - (double)p2 / q2) < EPS || q2 > MAX_DEN) {
+            return (Fraction){p2, q2};
+        }
+
+        p0 = p1;
+        q0 = q1;
+
+        p1 = p2;
+        q1 = q2;
+    }
 }
+
 
 //получает чисто число и базу, сообщает, конечная ли дробь
 bool checkProper(Fraction f, int base) {
