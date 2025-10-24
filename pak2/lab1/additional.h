@@ -11,7 +11,6 @@ typedef enum {
 typedef struct {
     long long numer;
     long long denumer;
-
 }Fraction;
 
 typedef struct {
@@ -23,3 +22,4 @@ typedef struct {
 void handleError(ReturnCode status);
 int ifThen(Array *res, int base, int cnt, ...);
 bool checkProper(Fraction f, int base);
+long long gcd(long long a, long long b);

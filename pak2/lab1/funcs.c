@@ -57,6 +57,7 @@ Fraction doubleToFract(double num) {
 
 //получает чисто число и базу, сообщает, конечная ли дробь
 bool checkProper(Fraction f, int base) {
+
     long long denum = f.denumer;
     long long commonDiv = gcd(denum, base);
     while (commonDiv > 1) {
@@ -70,11 +71,13 @@ bool checkProper(Fraction f, int base) {
 
 // валист итерируется по аргмуентам функции
 int ifThen(Array *res, int base, int cnt, ...) {
+    const double EPS = 1e-12;
+
     va_list args;
     va_start(args, cnt);
     for (int i = 0; i < cnt; i++) {
         double x = va_arg(args, double);
-        if (x <= 1e-12 || x >= 1 - 1e-12) {
+        if (x <= EPS || x >= 1 - EPS) {
             continue;
         }
         Fraction f = doubleToFract(x);
