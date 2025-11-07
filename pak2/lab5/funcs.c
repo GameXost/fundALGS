@@ -146,6 +146,37 @@ int readFull(FILE *input, char **res) {
     *res = str;
     return OK;
 }
+
+
+void checkPrint(FILE *output, char **words, size_t cntWords, size_t lenStr) {
+    if (cntWords == 0) {
+        return;
+    }
+    if (cntWords == 1) {
+        fprintf(output, "%s\n", words[0]);
+        return;
+    }
+
+    size_t gaps = cntWords - 1;
+    size_t spaceCnt = 80 - lenStr;
+    size_t spacePerGap = spaceCnt / gaps;
+    size_t rest = spaceCnt % gaps;
+
+    for (size_t i = 0; i < cntWords; i++) {
+        fprintf(output, "%s", words[i]);
+        if (i < gaps) {
+            for (size_t g = 0; g < spacePerGap; g++) {
+                fputc(' ', output);
+            }
+            if (rest > 0) {
+                fputc(' ', output);
+                rest--;
+            }
+        }
+    }
+    fprintf(output, "\n");
+}
+
 int handleString(char *str, FILE *output) {
     char *ptr = strdup(str);
     if (ptr == NULL) {
