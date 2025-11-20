@@ -6,6 +6,13 @@ typedef struct {
     const char *letter;
 }romanCombs;
 
+typedef enum {
+    OK,
+    INVALID_INPUT,
+    MEMORY_ALLOCATION,
+
+}StatusCode;
+
 romanCombs roms[] = {
     {1000, "M"},
     {900, "CM"},
@@ -22,12 +29,12 @@ romanCombs roms[] = {
     {1, "I"},
 };
 
-char *intToRoman(int number);
-char *zec(unsigned int number);
+char *intToRoman(int number, StatusCode *status);
+char *zec(unsigned int number, StatusCode *status);
 char *toBaseSup(char *num, int base, int isUpper);
-char *toBase(int num, int base, int isUpper);
+char *toBase(int num, int base, int isUpper, StatusCode *status);
 int charToVal(char c);
 char *multipleString(char *numStr, int base);
 char *incrementStr(char *numStr, int increm);
-char *toDec(char *numStr, int base);
-char *dumpDumpDumpIt(void *ptr, size_t size);
+char *toDec(char *numStr, int base, StatusCode *status);
+char *dumpDumpDumpIt(void *ptr, size_t size, StatusCode *status);

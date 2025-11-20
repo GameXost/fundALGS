@@ -5,75 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-
-#define PATH_MAX 4096
-
-typedef enum {
-    OK,
-    INVALID_INPUT,
-    EQUAL_FILE_PATHS,
-    INVALID_FILE_NAME,
-    MEMORY_ALLOCATION,
-    END_OF_INPUT
-}StatusCode;
-
-void handleError(StatusCode status) {
-    switch (status) {
-        case OK:
-            printf("everything is fine\n");
-            break;
-        case INVALID_INPUT:
-            printf("shit here what you inserted bruh\n");
-            break;
-        case EQUAL_FILE_PATHS:
-            printf("bruh dont try to overwrite the file nigga\n");
-            break;
-        case INVALID_FILE_NAME:
-            printf("smth wrong with your file name or with it's path\n");
-            break;
-        case MEMORY_ALLOCATION:
-            printf("haha LOL memory error\n");
-            break;
-        case END_OF_INPUT:
-            printf("that's the end of user's input\n");
-            break;
-        default:
-            printf("wtf???\n");
-    }
-}
-
-
-int fileValidate(char *path1, char *path2) {
-    char pathReal1[PATH_MAX];
-    char pathReal2[PATH_MAX];
-    if (realpath(path1, pathReal1) == NULL) {
-        return INVALID_FILE_NAME;
-    }
-
-    if (realpath(path2, pathReal2) == NULL) {
-        if (path2[0] == '/'){
-            strncpy(pathReal2, path2, PATH_MAX-1);
-            pathReal2[PATH_MAX-1] = '\0';
-        } else {
-            if (getcwd(pathReal2, PATH_MAX) == NULL) {
-                return INVALID_FILE_NAME;
-            }
-            size_t len = strlen(pathReal2);
-            if (len + strlen(path2) + 2 > PATH_MAX) {
-                return INVALID_FILE_NAME;
-            }
-            if (pathReal2[len-1] != '/') {
-                pathReal2[len++] = '/';
-            }
-            strcpy(pathReal2 + len, path2);
-        }
-    }
-
-    if (strcmp(pathReal1, pathReal2) == 0) {
-        return EQUAL_FILE_PATHS;
-    }
-    return OK;
-}
+#include "additional.h"
 
 
 
@@ -139,6 +71,7 @@ int readFull(FILE *input, char **res) {
         cap *= 2;
         char *temp = (char*)realloc(str, cap);
         if (temp == NULL){
+            free(str);
             return MEMORY_ALLOCATION;
         }
         str = temp;
@@ -195,27 +128,8 @@ int handleString(char *str, FILE *output) {
 
         if (strlen(word) > 80) {
             if (cntWords > 0) {
-                size_t gaps = cntWords - 1;
-                if (gaps > 0) {
-                    size_t spacesCnt = 80 - lenStr;
-                    size_t spacePerGap = spacesCnt / gaps;
-                    size_t rest = spacesCnt % gaps;
-                    for (size_t i = 0; i < cntWords; i++) {
-                        fprintf(output, "%s", words[i]);
-                        if (i < gaps) {
-                            for (size_t g = 0; g < spacePerGap; g++) {
-                                fputc(' ', output);
-                            }
-                            if (rest > 0) {
-                                fputc(' ', output);
-                                rest--;
-                            }
-                        }
-                    }
-                    fprintf(output, "\n");
-                } else {
-                    fprintf(output, "%s\n", words[0]);
-                }
+
+                checkPrint(output, words, cntWords, lenStr);
                 free(words);
                 words = NULL;
                 cntWords = 0;
@@ -230,23 +144,7 @@ int handleString(char *str, FILE *output) {
             continue;
         }
         if (cntWords > 0 && (lenStr + cntWords + strlen(word) > 80)) {
-            size_t gaps = cntWords - 1;
-            size_t spaceCnt = 80 - lenStr;
-            size_t spacePerGap = spaceCnt / gaps;
-            size_t rest = spaceCnt % gaps;
-            for (size_t i = 0; i < cntWords; i++) {
-                fprintf(output, "%s", words[i]);
-                if (i < gaps) {
-                    for (size_t g = 0; g < spacePerGap; g++) {
-                        fputc(' ', output);
-                    }
-                    if (rest > 0) {
-                        fputc(' ', output);
-                        rest--;
-                    }
-                }
-            }
-            fprintf(output, "\n");
+            checkPrint(output, words, cntWords, lenStr);
             free(words);
             words = NULL;
             cntWords = 0;
@@ -267,11 +165,11 @@ int handleString(char *str, FILE *output) {
         word = strtok(NULL, " ");
     }
     if (cntWords > 0) {
-        for (size_t i = 0; i < cntWords; i++) {
-            fprintf(output, "%s%s", words[i], (i < cntWords - 1) ? " ":"");
-        }
-        fprintf(output, "\n");
+        checkPrint(output, words, cntWords, lenStr);
         free(words);
+        words = NULL;
+        cntWords = 0;
+        lenStr = 0;
     }
     free(ptr);
     return OK;
@@ -312,65 +210,4 @@ int processFile(char *inputPath, char *outputPath) {
     return OK;
 
 
-}
-
-
-
-
-int main(){
-    bool flag = true;
-    while (flag) {
-        printf("enter first fileName: \n");
-        char *path1 = NULL;
-        StatusCode status = readPath(&path1);
-        if (status != OK) {
-            handleError(status);
-            free(path1);
-            if (status == END_OF_INPUT) {
-                printf("the end bruh\n");
-                flag = false;
-                break;
-            }
-            continue;
-        }
-        if (strcmp(path1, "exit") == 0 || strcmp(path1, "") == 0) {
-            free(path1);
-            printf("the end of the program\n");
-            break;
-        }
-        printf("enter second fileName: \n");
-        char *path2 = NULL;
-        status = readPath(&path2);
-        if (status != OK) {
-            handleError(status);
-            free(path1);
-            free(path2);
-            if (status == END_OF_INPUT) {
-                printf("the end bruh\n");
-                flag = false;
-            }
-            continue;
-        }
-
-        status = fileValidate(path1, path2);
-        if (status != OK) {
-            handleError(status);
-            free(path1);
-            free(path2);
-            continue;
-        }
-
-        status = processFile(path1, path2);
-        if (status != OK) {
-            handleError(status);
-            free(path1);
-            free(path2);
-            return status;
-        }
-
-        printf("%s\n%s\n", path1, path2);
-        free(path1);
-        free(path2);
-    }
-    printf("the end gahah\n");
 }

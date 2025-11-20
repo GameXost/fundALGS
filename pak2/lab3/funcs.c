@@ -7,14 +7,16 @@
 #include "additional.h"
 
 
-char *intToRoman(int number) {
+char *intToRoman(int number, StatusCode *status) {
     if (number <= 0) {
+        *status = INVALID_INPUT;
         return NULL;
     }
     size_t len = 0;
     size_t cap = 16;
     char *buf = (char*)malloc(sizeof(char) * cap);
     if (buf == NULL) {
+        *status = MEMORY_ALLOCATION;
         return NULL;
     }
     buf[0] = '\0';
@@ -27,6 +29,7 @@ char *intToRoman(int number) {
                 char *temp = (char*)realloc(buf, cap);
                 if (temp == NULL) {
                     free(buf);
+                    *status = MEMORY_ALLOCATION;
                     return NULL;
                 }
                 buf = temp;
@@ -37,17 +40,20 @@ char *intToRoman(int number) {
         }
         i++;
     }
+    *status = OK;
     return buf;
 }
 
 
-char *zec(unsigned int number) {
+char *zec(unsigned int number, StatusCode *status) {
     if (number == 0) {
+        *status = OK;
         return strdup("01");
     }
     size_t cap = 16;
     unsigned int *fib = (unsigned int *)malloc(sizeof(unsigned int) * cap);
     if (fib == NULL) {
+        *status = MEMORY_ALLOCATION;
         return NULL;
     }
 
@@ -60,6 +66,7 @@ char *zec(unsigned int number) {
             unsigned int *temp = (unsigned int *)realloc(fib, sizeof(unsigned int) * cap);
             if (temp == NULL) {
                 free(fib);
+                *status = MEMORY_ALLOCATION;
                 return NULL;
             }
             fib = temp;
@@ -70,6 +77,7 @@ char *zec(unsigned int number) {
     char *res = (char*)calloc(len + 2, 1);
     if (res == NULL) {
         free(fib);
+        *status = MEMORY_ALLOCATION;
         return NULL;
     }
     bool usedPrev = false;
@@ -93,23 +101,27 @@ char *zec(unsigned int number) {
 
     res[len] = '1';
     res[len+1] = '\0';
+    *status = OK;
     return res;
 }
 
-char *toBaseSup(char *num, int base, int isUpper) {
+char *toBaseSup(char *num, int base, int isUpper, StatusCode *status) {
     if (num == NULL || *num == '\0') {
+        *status = INVALID_INPUT;
         return NULL;
     }
     if (strcmp(num, "0") == 0) {
+        *status = OK;
         return strdup("0");
     }
     const char lowerDigits[] = "0123456789abcdefghijklmnopqrstuvwxyz";
     const char upperDigits[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const char *digits = isUpper ? upperDigits : lowerDigits;
+    const char *digits = isUpper == 1 ? upperDigits : lowerDigits;
     int resLen = 0;
     int cap = 16;
     int *resDig = (int*)malloc(sizeof(int) * cap);
     if (resDig == NULL) {
+        *status = MEMORY_ALLOCATION;
         return NULL;
     }
 
@@ -119,6 +131,7 @@ char *toBaseSup(char *num, int base, int isUpper) {
         if (*p < '0' || *p > '9') {
             // if (!isalnum(*p)){
             free(resDig);
+            *status = INVALID_INPUT;
             return NULL;
         }
         int digit = *p - '0';
@@ -136,6 +149,7 @@ char *toBaseSup(char *num, int base, int isUpper) {
                 int *temp = (int*)realloc(resDig, sizeof(int) * cap);
                 if (temp == NULL) {
                     free(resDig);
+                    *status = MEMORY_ALLOCATION;
                     return  NULL;
                 }
                 resDig = temp;
@@ -152,6 +166,7 @@ char *toBaseSup(char *num, int base, int isUpper) {
     char *res = (char*)malloc(resLen + 1);
     if (res == NULL) {
         free(resDig);
+        *status = MEMORY_ALLOCATION;
         return NULL;
     }
     for (int i = 0; i < resLen; i++) {
@@ -159,6 +174,7 @@ char *toBaseSup(char *num, int base, int isUpper) {
     }
     res[resLen] = '\0';
     free(resDig);
+    *status = OK;
     return res;
 
 }
@@ -287,13 +303,14 @@ char *incrementStr(char *numStr, int increm) {
 }
 
 
-char *toDec(char *numStr, int base) {
+char *toDec(char *numStr, int base, StatusCode *status) {
 
     if (base < 2 || base > 36) {
         base = 10;
     }
     char *res = (char*)malloc(sizeof(char) * 2);
     if (res == NULL) {
+        *status= MEMORY_ALLOCATION;
         return NULL;
     }
     res[0] = '0';
@@ -304,31 +321,36 @@ char *toDec(char *numStr, int base) {
         int dig = charToVal(numStr[i]);
         if (dig < 0 || dig >= base) {
             free(res);
+            *status = INVALID_INPUT;
             return NULL;
         }
         char *preResMul = NULL;
         preResMul = multipleString(res, base);
         free(res);
         if (preResMul == NULL) {
+            *status = INVALID_INPUT;
             return NULL;
         }
         char *preResAdd = NULL;
         preResAdd = incrementStr(preResMul, dig);
         free(preResMul);
         if (preResAdd == NULL) {
+            *status = INVALID_INPUT;
             return NULL;
         }
         res = preResAdd;
     }
+    *status = OK;
     return res;
 }
 
 
-char *dumpDumpDumpIt(void *ptr, size_t size) {
+char *dumpDumpDumpIt(void *ptr, size_t size, StatusCode *status) {
     size_t strSize = size * 8 + size;
 
     char *res = (char *)malloc(strSize);
     if (res == NULL) {
+        *status = MEMORY_ALLOCATION;
         return NULL;
     }
 
@@ -345,6 +367,7 @@ char *dumpDumpDumpIt(void *ptr, size_t size) {
         }
     }
     res[ind] = '\0';
+    *status = OK;
     return res;
 }
 

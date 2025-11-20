@@ -5,3 +5,4 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
 add_subdirectory(pak1)
 add_subdirectory(pak2)
+add_subdirectory(pak3)

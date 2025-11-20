@@ -2,8 +2,14 @@
 #include <stdbool.h>
 #include "addational.h"
 
+
+// чекнуть о большую и малую по матану
+
 //a
 void *memchr(const void *str, int c, size_t n) {
+    if (str == NULL) {
+        return NULL;
+    }
     const unsigned char *ptr = (const unsigned char*)str;
     unsigned char ch = (unsigned char)c;
     for (size_t i = 0; i<n; i++) {
@@ -19,6 +25,9 @@ void *memchr(const void *str, int c, size_t n) {
 // -1 если 1 < 2;
 //0 если 1 == 2
 int memcmp(const void *str1, const void *str2, size_t n) {
+    if (str1 == NULL || str2 == NULL) {
+        return 0;
+    }
     const unsigned char *ptr1 = (const unsigned char*)str1;
     const unsigned char *ptr2 = (const unsigned char*)str2;
 
@@ -32,6 +41,9 @@ int memcmp(const void *str1, const void *str2, size_t n) {
 
 //c
 void *memcpy(void *dest, const void *src, size_t n) {
+    if (dest == NULL || src == NULL) {
+        return NULL;
+    }
     unsigned char *newDest = (unsigned char*)dest;
     const unsigned char *newSrc = (const unsigned char*)src;
 
@@ -44,6 +56,9 @@ void *memcpy(void *dest, const void *src, size_t n) {
 
 //d
 void *memset(void *str, int c, size_t n) {
+    if (str == NULL) {
+        return NULL;
+    }
     unsigned char C = (unsigned char)c;
     unsigned char *ptr = (unsigned char*)str;
     for (size_t i = 0; i < n; i++) {
@@ -54,6 +69,9 @@ void *memset(void *str, int c, size_t n) {
 
 //e
 char *strncat(char *dest, const char *src, size_t n) {
+    if (dest == NULL || src == NULL) {
+        return NULL;
+    }
     char *newDest = dest;
     while (*newDest != '\0') {
         newDest++;
@@ -65,16 +83,20 @@ char *strncat(char *dest, const char *src, size_t n) {
     }
 
     newDest[i] = '\0';
-    return (void*)dest;
+    return dest;
 }
 
 //f
 char *strchr(const char *str, int c) {
+    if (str == NULL) {
+        return NULL;
+    }
     unsigned char C = (unsigned char)c;
     while (*str != '\0') {
         if (*(unsigned char*)str == C) {
             return (char*)str;
         }
+        str++;
     }
     if (C == '\0') {
         return (char*)str;
@@ -84,11 +106,21 @@ char *strchr(const char *str, int c) {
 
 //g
 int strncmp(const char *str1, const char *str2, size_t n) {
+    if (str1 == NULL || str2 == NULL) {
+        return 0;
+    }
+    if (strlen(str1) < n) {
+        n = strlen(str1);
+    }
+    if (strlen(str2) < n) {
+        n = strlen(str2);
+    }
+
     for (size_t i = 0; i < n; i++) {
-        if (*str1 != *str2) {
+        if (str1[i] != str2[i]) {
             return (unsigned char)str1[i] - (unsigned char)str2[i];
         }
-        if (str1[i] == '\0' || str2[i] == '\0') {
+        if (str1[i] == '\0') {
             return 0;
         }
     }
@@ -97,6 +129,9 @@ int strncmp(const char *str1, const char *str2, size_t n) {
 
 //h
 char *strncpy(char *dest, const char *src, size_t n) {
+    if (dest == NULL || src == NULL) {
+        return NULL;
+    }
     char *ptr = dest;
     size_t i = 0;
     for (; i < n && *src != '\0'; i++) {
@@ -107,11 +142,15 @@ char *strncpy(char *dest, const char *src, size_t n) {
     while(i < n) {
         *ptr = '\0';
         i++;
+        ptr++;
     }
     return dest;
 }
 //i
-size_t strcspn(const char *str1, const char *str2){
+size_t strcspn(const char *str1, const char *str2) {
+    if (str1 == NULL || str2 == NULL) {
+        return 0;
+    }
     size_t len = 0;
 
     for (size_t i = 0; str1[i] != '\0';i++) {
@@ -144,6 +183,9 @@ char *strerror(int errnum) {
 
 //k
 size_t strlen(const char *str) {
+    if (str == NULL) {
+        return 0;
+    }
     size_t len = 0;
     while (str[len] != '\0') {
         len++;
@@ -154,6 +196,9 @@ size_t strlen(const char *str) {
 
 //l
 char *strpbrk(const char *str1, const char *str2) {
+    if (str1 == NULL || str2 == NULL) {
+        return NULL;
+    }
     while (*str1 != '\0') {
         for (const char *ptr2 = str2; *ptr2 != '\0'; ptr2++) {
             if (*str1 == *ptr2) {
@@ -169,7 +214,10 @@ char *strpbrk(const char *str1, const char *str2) {
 
 //m
 //проверить ласт символ
-char *strrchar(const char *str, int c) {
+char *strrchr(const char *str, int c) {
+    if (str == NULL) {
+        return NULL;
+    }
     unsigned char C = (unsigned char)c;
     char *res = NULL;
     while (*str != '\0') {
@@ -179,7 +227,7 @@ char *strrchar(const char *str, int c) {
         str++;
     }
     if (C == '\0') {
-        return (char*)res;
+        return (char*)str;
     }
 
     return (char*)res;
@@ -187,6 +235,9 @@ char *strrchar(const char *str, int c) {
 
 //n
 char *strstr(const char *haystack, const char *needle) {
+    if (haystack == NULL || needle == NULL) {
+        return NULL;
+    }
     if (*needle == '\0') {
         return (char *)haystack;
     }
@@ -218,6 +269,9 @@ int is_delim(const char c, const char *delim) {
 }
 
 char *strtok(char *str, const char *delim) {
+    if (delim == NULL) {
+        return NULL;
+    }
     static char *saveStr = NULL;
 
     if (str == NULL) {
